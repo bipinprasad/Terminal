@@ -1,0 +1,175 @@
+<html><head>
+<meta name="Author" content="Bipin Prasad">
+<title>Java Terminal</title>
+<script LANGUAGE=javascript>
+
+var browserName=navigator.appName; // "Netscape" or "Microsoft Internet Explorer"
+var browserVersion=navigator.appVersion; // "4.5"
+
+//var isIE=(browserName!="Netscape");
+var isIE = false;
+var isNAV= true;
+
+if (document.all != null)
+	isIE = true;
+isNAV= !isIE;
+
+// PARAM: cgiExtension - Suffix to apply to cgiPrograms. This is useful
+//					if the server is Microsoft NT. All cgi program names are
+//					extended with this parameter. Default is a zero
+//					length string.
+// PARAM: protocol - Protocol used. Normally this should not
+//					be set. The applet can determine the protocol used
+//					("http" or "https"). Setting protocol will redirect all
+//					the URL calls made from the applet. This is useful
+//					for local installs where the applet protocol is "file",
+//					however, the cgi-programs reside on a specified server.
+// PARAM: serverHost - Host from which this applet is running. Normally
+//					this should not be set. The applet can determine the host.
+//					Setting serverHost will redirect all the URL calls made
+//					from the applet. So this is useful to set in case of a
+//					local install that accesses a server.
+// PARAM: serverPort - Port from which this applet is running. Normally
+//					this should not be set. The applet can determine the port.
+//					Setting serverPort will redirect all the URL calls made
+//					from the applet. So this is useful to set in case of a
+//					local install that accesses a server.
+// PARAM: docBaseDir - Directory to the document base directory. Normally
+//					this should not be set. The applet can determine the
+//					document base. If docBaseDir is set then it will be
+//					used to determine paths to files (e.g. options for the user).
+// PARAM: cgiDir -  Directory where CGI programs are stored. Normally this
+//					should not be set. The default value of this is "/cgi-lawson".
+// PARAM: userName - Web User Id of the user. Normally this should not
+//					be set for an applet. This will be determined by the login
+//					process.
+// PARAM: userPasswd - Web User Password for the user. Normally this should not
+//					be set for an applet.
+// PARAM: dme - 	Name of the DME program. Normally this should not
+//					be set. The default value of this is "dme".
+//					This is useful in a Lawson Environment.
+// PARAM: login -	Name of the login program. Normally this should not
+//					be set. The default value of this is "login".
+//					This is useful in a Lawson Environment.
+// PARAM: prefsave - Name of the preferences save program.
+//					The default value of this is "prefsave".
+//					This is useful in a Lawson Environment.
+// PARAM: secdirlist - Name of the program to list directory.
+//					The default value of this is "secdirlist".
+// PARAM: retrieveWebId  - retrieves the web user id. A cgi program called
+//					"login" (or one specified by PARAM_LOGIN) is called
+//					to determine the web user id.
+// PARAM: retrieveLoginForWeb  - retrieves the login id for corresponding to
+//					the current web user id. This is relevant for the
+//					Lawson environment. A DME CGI call is made to determine
+//					the id.
+// PARAM: useLocalOptions - Options are saved locally (and not on server).
+//					The "localDirectory" must be specified for this to work
+//					correctly. This option is useful for a local install.
+// PARAM: useLocalLaTree - LaTree configation is saved locally (and not on server).
+//					The "localDirectory" must be specified for this to work
+//					correctly. This option is useful for a local install.
+// PARAM: useLocalImages - Images are loaded locally (and not from server).
+//					The "localDirectory" must be specified for this to work
+//					correctly. This option is useful for a local install.
+// PARAM: useLocalTermInfo - Terminal Info is available locally (and not on server).
+//					The "localDirectory" must be specified for this to work
+//					correctly. This option is useful for a local install.
+// PARAM: localDirectory - Local directory under which options will be
+//					saved, if the useLocalOptions is set to true. This is
+//					useful for a local install.
+//					If "useLocalOptions" is set to true but "localDirectory"
+//					is not specified, then a default location of
+//					JAVA_HOME/prasad/terminal is used.
+// PARAM: useLaTree - Should LaTree be shown. This is useful for a Lawson
+//					environment. Typing LaTree at the command prompt will
+//					activate a tree view of all the Lawson Product Lines.
+//					This view can be customized by the user. Running
+//					LaTree requires access to lawson CGI programs that
+//					return information about nodes at each tree node.
+//					This programs are normally installed when Lawson's
+//					Network Enterprise Desktop is installed.
+// PARAM: debug - enable applet debugging
+// PARAM: isIE - should be set to true/false. If true then it is assumed that
+//					applet is running under Microsoft Internet Explorer.
+// PARAM: isNAV - should be set to true/false. If true then it is assumed that
+//					applet is running under Netscape Navigator.
+// PARAM: install.enable : Enable the install menu option. This menu item
+//					will allow the user to install signed cab and jar files
+//					on to the current client. The installation can be
+//					specified as a server or a client install. Server installation
+//					is for access by multiple users on a single host.
+//					Client install is for a local install, usually for a single
+//					user on a single machine.
+// PARAM install.sourceHost : Host from which the CAB and JAR files are downloaded.
+// PARAM install.sourceDir	: Directory on source host that contains CAB and JAR files
+// PARAM install.version	: Version of the source code
+// PARAM install.compileDate: Date on which the code was compiled
+//
+var c="";
+	var installVersion = "1.11";
+	var installCompileDate = "Sun Apr 02 17:36:47 CDT 2000";
+var params = '\
+		<!PARAM NAME="host" VALUE="unknown"> \
+		<!PARAM NAME="debug" VALUE="false"> \
+		<PARAM NAME="isIE" VALUE="' + isIE + '"> \
+		<PARAM NAME="isNAV" VALUE="' + isNAV + '"> \
+		<PARAM NAME="port" VALUE="23">  \
+		<PARAM NAME="emulator" VALUE="pt80-e">  \
+		<PARAM NAME="cgiDir" VALUE="cgi-lawson"> \
+		<!PARAM NAME="cgiExtension" VALUE=".exe"> \
+		<!PARAM NAME="protocol" VALUE="http"> \
+		<!PARAM NAME="serverHost" VALUE="myServerHost"> \
+		<!PARAM NAME="serverPort" VALUE="myServerPort"> \
+		<!PARAM NAME="docBaseDir" VALUE="myDocBase"> \
+		<!PARAM NAME="userName" VALUE="myUserName"> \
+		<!PARAM NAME="userPasswd" VALUE="myUserName"> \
+		<!PARAM NAME="dme" VALUE="dme"> \
+		<!PARAM NAME="login" VALUE="login"> \
+		<!PARAM NAME="prefsave" VALUE="prefsave"> \
+		<!PARAM NAME="secdirlist" VALUE="secdirlist"> \
+		<PARAM NAME="retrieveWebId" VALUE="false">  \
+		<PARAM NAME="retrieveLoginForWeb" VALUE="false">  \
+		<PARAM NAME="useLaTree" VALUE="false">  \
+		<PARAM NAME="useLocalOptions" VALUE="true">  \
+		<PARAM NAME="useLocalLaTree" VALUE="true">  \
+		<PARAM NAME="useLocalTermInfo" VALUE="false">  \
+		<!PARAM NAME="localDirectory" VALUE="C:\\prasad\\terminal">  \
+		<PARAM NAME="install.enable" VALUE="true">  \
+		<PARAM NAME="install.sourceHost" VALUE="www.prasad-assoc.com">  \
+		<PARAM NAME="install.sourceDir" VALUE="/home/prasad-assoc/www/prasad/terminal">  \
+		<PARAM NAME="install.version" VALUE="' + installVersion + '">  \
+		<PARAM NAME="install.compileDate" VALUE="' + installCompileDate + '">  \
+		';
+if (isIE)
+	c = '<APPLET \
+		  CABBASE=terminal.cab \
+		  CODE="prasad.terminal.LaTerm.class" \
+		  NAME="LaTermApplet" \
+		  WIDTH=100 \
+		  HEIGHT=100 \
+		  HSPACE=0 \
+		  VSPACE=0 \
+		  ALIGN=middle > ' + params +
+		'</APPLET>';
+else
+	c= '<APPLET \
+		  ARCHIVE=terminal.jar  \
+		  CODE="prasad.terminal.LaTerm.class"  \
+		  NAME="LaTermApplet"  \
+		  WIDTH=100  \
+		  HEIGHT=100  \
+		  HSPACE=0  \
+		  VSPACE=0  \
+		  ALIGN=middle > ' + params +
+		'</APPLET>';
+document.writeln(c);
+document.close;
+
+</script>
+</head>
+<body>&nbsp;
+Terminal will appear in a Java enabled browser.<BR>
+</body>
+</html>
+

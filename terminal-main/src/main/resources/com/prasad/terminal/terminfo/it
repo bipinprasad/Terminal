@@ -1,0 +1,6 @@
+it|intertube|intertec,
+	am, 
+	cols#80, lines#25, 
+	bel=^G, cr=\r, clear=\f, cud1=\n, 
+	home=^A, cub1=\b, cuf1=^F, cup=\EY%p1%' '%+%c%p2%' '%+%c$<50>, cuu1=^Z, 
+	smso=\E0P, rmso=\E0@, ind=\n, 

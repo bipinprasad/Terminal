@@ -1,0 +1,9 @@
+Name: mpTOOLS/mpEDIT/mpEDIT.class
+Java-Application: True
+Application-Name: mpEDIT
+Application-Version: 1.12s5
+Application-Alias: mpEDIT
+Application-Home: http://members.tripod.com/~mpTOOLS/mpEDIT.html
+Application-Author: John Jensen <jjens@primenet.com>
+Application-Archive: mpEDIT.jar
+Application-Docs: mpEDIT.html

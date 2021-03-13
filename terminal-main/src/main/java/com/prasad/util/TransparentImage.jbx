@@ -1,0 +1,14 @@
+[PropertyInfo]
+alignment,int,false,false, , ,true,<default>
+applet,Applet,false,false, , ,true,<default>
+drawEdge,boolean,false,false, , ,true,<default>
+edgeColor,Color,false,false, , ,true,<default>
+image,Image,false,false, , ,true,<default>
+imageName,String,false,false, , ,true,<default>
+preferredSize,Dimension,false,false, , ,true,<default>
+transparent,boolean,false,false, , ,true,<default>
+[IconNames]
+Image.bmp
+
+
+
