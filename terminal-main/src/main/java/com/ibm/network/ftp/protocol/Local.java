@@ -33,6 +33,7 @@ Local (FTPProtocol parent ) {
 /**
  * changeDir method comment.
  */
+@Override
 public void changeDir(String newDirString) {
 	//if the user enters current directory ie "."
 	if(newDirString.equals(".")){
@@ -121,6 +122,7 @@ public void changeDir(String newDirString) {
 /**
  * deleteDir method comment.
  */
+@Override
 public void deleteDir(String dirName) {
 	//find out the current Directory
 	String currentDir=System.getProperty("user.dir");
@@ -150,6 +152,7 @@ public void deleteDir(String dirName) {
 /**
  * deleteFile method comment.
  */
+@Override
 public void deleteFile(String fileName) {
 	//find out the current Directory
 	String currentDir=System.getProperty("user.dir");
@@ -192,6 +195,7 @@ public void deleteFile(String fileName) {
 /**
  * fileList method comment.
  */
+@Override
 public java.util.Vector<FileInfo> fileList() {
 	FileInfo fileInfo;
 	Vector<FileInfo> fileList =null;
@@ -243,6 +247,7 @@ public java.util.Vector<FileInfo> fileList() {
 /**
  * getCurrentDir method comment.
  */
+@Override
 public String getCurrentDir() {
 	String currentDir =System.getProperty("user.dir");
 	this.localCurrentDir=currentDir;
@@ -279,6 +284,7 @@ public static Local getLocalProtocol(FTPProtocol parent ) {
 /**
  * makeDir method comment.
  */
+@Override
 public void makeDir(String dirName) {
 	String currentDir=System.getProperty("user.dir");
 	printText("mkdir "+dirName+"\n");
@@ -299,6 +305,7 @@ public void makeDir(String dirName) {
 /**
  * printText method comment.
  */
+@Override
 protected void printText(String text) {
 	//Send the string received to the parent bean to be sent back
 	// to the User Interface bean
@@ -307,6 +314,7 @@ protected void printText(String text) {
 /**
  * rename method comment.
  */
+@Override
 public void rename(String oldName, String newName) {
 	//Get the current working dir first
 	String currentDir=System.getProperty("user.dir");

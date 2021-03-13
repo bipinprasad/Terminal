@@ -33,7 +33,8 @@ class PVTextField extends TextField {
 		m_minWidth = minWidth;
 	}
 
-	protected void processKeyEvent(java.awt.event.KeyEvent event) {
+	@Override
+    protected void processKeyEvent(java.awt.event.KeyEvent event) {
 	    
 	    if(event.getID() != KeyEvent.KEY_PRESSED)
             return;

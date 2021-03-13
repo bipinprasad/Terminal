@@ -208,16 +208,19 @@ public class PanelFtpRemote extends Panel
         dirTreeLocal.addPVTreeActionListener(new PanelFtpRemote_dirTreeLocal_PVTreeActionAdapter(this));
 
         fileTreeLocal.addMouseListener(new MouseAdapter() {
+            @Override
             public void mousePressed(MouseEvent e) {
                 fileTreeLocal_mousePressed(e);
             }
         });
         dirTreeLocal.addMouseListener(new MouseAdapter() {
+            @Override
             public void mousePressed(MouseEvent e) {
                 dirTreeLocal_mousePressed(e);
             }
         });
         fileTreeRemote.addMouseListener(new MouseAdapter() {
+            @Override
             public void mousePressed(MouseEvent e) {
                 fileTreeRemote_mousePressed(e);
             }
@@ -518,6 +521,7 @@ public class PanelFtpRemote extends Panel
         }
     }
 
+    @Override
     protected void finalize() {
         // only one instance of FTPProtocol can exist in the whole application/applet
         // so remove /destroy it
@@ -1037,6 +1041,7 @@ public class PanelFtpRemote extends Panel
         }
     }
 
+    @Override
     public void remoteFileListReceived(RemoteFileListEvent event) {
         //TODO: implement this com.ibm.network.ftp.event.LocalFileListListener method;
         switch (fileListReceiverModeRemote) {
@@ -1059,6 +1064,7 @@ public class PanelFtpRemote extends Panel
         }
     }
 
+    @Override
     public void localFileListReceived(LocalFileListEvent event) {
         //TODO: implement this com.ibm.network.ftp.event.LocalFileListListener method;
         switch (fileListReceiverModeLocal) {
@@ -1471,6 +1477,7 @@ public class PanelFtpRemote extends Panel
         return retVal;
     }
 
+    @Override
     public void statusReceived(StatusEvent event) {
         //TODO: implement this com.ibm.network.ftp.event.StatusListener method;
         String s = event.getMessage();
@@ -2195,6 +2202,7 @@ public class PanelFtpRemote extends Panel
      * @param socksHost java.lang.String
      * @param socksPort java.lang.String
      */
+    @Override
     public void setSocksInfo(String socksHost, String socksPort) {
         setProxyHost(socksHost);
         setProxyPort(socksPort);
@@ -3220,6 +3228,7 @@ public class PanelFtpRemote extends Panel
         KeepAliveThread() {
         }
 
+        @Override
         public void run() {
             for (; ; ) {
                 if (keepAliveCountDown < 0) {

@@ -37,6 +37,7 @@ public class FrameFtpDir extends Frame {
     public static void main(String[] args) {
         FrameFtpDir frameFtpDir = new FrameFtpDir(false, false);
         frameFtpDir.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 try {
                     System.exit(0);
@@ -57,6 +58,7 @@ public class FrameFtpDir extends Frame {
         cbMenuItemViewLocal.setLabel("Show Local");
         cbMenuItemViewLocal.setState(true);
         cbMenuItemViewLocal.addItemListener(new java.awt.event.ItemListener() {
+            @Override
             public void itemStateChanged(ItemEvent e) {
                 cbMenuItemViewLocal_itemStateChanged(e);
             }
@@ -64,6 +66,7 @@ public class FrameFtpDir extends Frame {
         cbMenuItemViewRemote.setLabel("Show Remote");
         cbMenuItemViewRemote.setState(true);
         cbMenuItemViewRemote.addItemListener(new java.awt.event.ItemListener() {
+            @Override
             public void itemStateChanged(ItemEvent e) {
                 cbMenuItemViewRemote_itemStateChanged(e);
             }
@@ -71,6 +74,7 @@ public class FrameFtpDir extends Frame {
         cbMenuItemViewDirs.setLabel("Show Directories");
         cbMenuItemViewDirs.setState(true);
         cbMenuItemViewDirs.addItemListener(new java.awt.event.ItemListener() {
+            @Override
             public void itemStateChanged(ItemEvent e) {
                 cbMenuItemViewDirs_itemStateChanged(e);
             }
@@ -80,6 +84,7 @@ public class FrameFtpDir extends Frame {
         menuFile.setLabel("File");
         menuItemConnect.setLabel("Connect");
         menuItemConnect.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 menuItemConnect_actionPerformed(e);
             }
@@ -87,16 +92,19 @@ public class FrameFtpDir extends Frame {
         menuItemDisconnect.setLabel("Disconnect");
         menuItemReconnect.setLabel("Reconnect");
         menuItemReconnect.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 menuItemReconnect_actionPerformed(e);
             }
         });
         menuItemDisconnect.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 menuItemDisconnect_actionPerformed(e);
             }
         });
         cbMenuItemViewFiles.addItemListener(new java.awt.event.ItemListener() {
+            @Override
             public void itemStateChanged(ItemEvent e) {
                 cbMenuItemViewFiles_itemStateChanged(e);
             }
@@ -114,11 +122,13 @@ public class FrameFtpDir extends Frame {
         this.setMenuBar(menuBar);
     }
 
+    @Override
     public void setBackground(Color c) {
         super.setBackground(c);
         panelFtpRemote.setBackground(c);
     }
 
+    @Override
     public void setForeground(Color c) {
         super.setForeground(c);
         panelFtpRemote.setForeground(c);

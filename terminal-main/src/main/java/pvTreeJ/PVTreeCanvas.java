@@ -241,6 +241,7 @@ class PVTreeCanvas extends Panel implements Serializable
 		}
 	}
 
+	@Override
 	public void paint(Graphics g)
 	{
 		if(!m_tree.m_Redraw) {
@@ -281,6 +282,7 @@ class PVTreeCanvas extends Panel implements Serializable
 		g.drawImage(image, 0, 0, this);
 	}
 
+	@Override
 	protected void processKeyEvent(java.awt.event.KeyEvent event) {
 	PVNode node;
 	int Pos;
@@ -367,6 +369,7 @@ class PVTreeCanvas extends Panel implements Serializable
 		return;
 	}
 
+	@Override
 	protected void processMouseEvent(java.awt.event.MouseEvent e)
 	{
 		int x = e.getX();
@@ -455,6 +458,7 @@ class PVTreeCanvas extends Panel implements Serializable
 
 	}
 
+	@Override
 	protected void processFocusEvent(FocusEvent e) {
 		// Get the new focus state and repaint
 		switch(e.getID()) {
@@ -466,6 +470,7 @@ class PVTreeCanvas extends Panel implements Serializable
 		}
     }
 
+	@Override
 	public void update(Graphics g) {
 		paint(g);
 	}

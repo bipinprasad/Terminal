@@ -273,6 +273,7 @@ public class PalTerm extends Applet implements Parameters, ImageLoader {
     public PalTerm() {
     }
 
+    @Override
     public String getAppletInfo() {
         return ("Prasad Java Terminal v" + VersionDialog.VERSION + "\n\n");
     }
@@ -308,12 +309,14 @@ public class PalTerm extends Applet implements Parameters, ImageLoader {
   */
 
     //Get a parameter value
+    @Override
     public String getParameter(String key, String def) {
         return isStandalone ? System.getProperty(key, def) :
             (getParameter(key) != null ? getParameter(key) : def);
     }
 
     /* Implement our parameter interface */
+    @Override
     public String getParameter(String name) {
         String retVal = null;
         try {
@@ -324,10 +327,12 @@ public class PalTerm extends Applet implements Parameters, ImageLoader {
         return retVal;
     }
 
+    @Override
     public boolean isApplet() {
         return !isStandalone;
     }
 
+    @Override
     public void init() {
         String val;
 
@@ -410,6 +415,7 @@ public class PalTerm extends Applet implements Parameters, ImageLoader {
             frameTerminal = new FrameTerminal();
             frameTerminal.setApplet(this);
             frameTerminal.addWindowListener(new WindowAdapter() {
+                @Override
                 public void windowClosing(WindowEvent e) {
                     try {
                         FrameTerminal f = (FrameTerminal) e.getSource();
@@ -440,6 +446,7 @@ public class PalTerm extends Applet implements Parameters, ImageLoader {
         initialized = true;
     }
 
+    @Override
     public void destroy() {
         frameTerminal.disconnect();
         frameTerminal.dispose();
@@ -447,6 +454,7 @@ public class PalTerm extends Applet implements Parameters, ImageLoader {
 
     boolean written_copyright = false;
 
+    @Override
     public void start() {
         if (!written_copyright) {
             written_copyright = true;
@@ -491,6 +499,7 @@ public class PalTerm extends Applet implements Parameters, ImageLoader {
         //backgroundClassLoaderThread.start();
     }
 
+    @Override
     public void stop() {
         //	if (frameTerminal != null )
         //		frameTerminal.hide();
@@ -910,6 +919,7 @@ public class PalTerm extends Applet implements Parameters, ImageLoader {
     public void install(Color background, Color foreground, Font fixedFont) {
         FrameInstall frameInstall = new FrameInstall();
         frameInstall.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 try {
                     ((FrameInstall) e.getSource()).dispose();
@@ -1027,6 +1037,7 @@ public class PalTerm extends Applet implements Parameters, ImageLoader {
      * @param observer   the image observer
      **/
 
+    @Override
     public Image loadImage(String image_dir, String image_file, Component observer, boolean waitForImage) {
 
         // need to get out of the sandbox when running from a jar file on local machine

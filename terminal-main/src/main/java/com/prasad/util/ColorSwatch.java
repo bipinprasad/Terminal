@@ -27,6 +27,7 @@ public class ColorSwatch extends Canvas {
     /**
      * Set the foreground color
      **/
+    @Override
     public void setForeground(Color c) {
         super.setForeground(c);
         repaint();
@@ -35,6 +36,7 @@ public class ColorSwatch extends Canvas {
     /**
      * Fill the component with the foreground color
      **/
+    @Override
     public void paint(Graphics g) {
         g.setColor(getForeground());
         g.fillRect(0, 0, getSize().width, getSize().height);
@@ -69,6 +71,7 @@ public class ColorSwatch extends Canvas {
      * Handle mouse click events. Redraw the color button if
      * this component is active.
      **/
+    @Override
     public void processMouseEvent(MouseEvent event) {
         if (event.getID() == MouseEvent.MOUSE_PRESSED) {
             if (active) {
@@ -96,6 +99,7 @@ public class ColorSwatch extends Canvas {
      * @param width  the new width
      * @param height the new height
      **/
+    @Override
     public void setSize(int width, int height) {
         prefSize.width = width;
         prefSize.height = height;
@@ -106,6 +110,7 @@ public class ColorSwatch extends Canvas {
      *
      * @param d the new dimensions
      **/
+    @Override
     public void setSize(Dimension d) {
         setSize(d.width, d.height);
     }
@@ -113,6 +118,7 @@ public class ColorSwatch extends Canvas {
     /**
      * Return the minimum size of this component
      **/
+    @Override
     public Dimension getMinimumSize() {
         return getPreferredSize();
     }
@@ -120,6 +126,7 @@ public class ColorSwatch extends Canvas {
     /**
      * Return the preferred size of this component
      **/
+    @Override
     public Dimension getPreferredSize() {
         return prefSize;
     }

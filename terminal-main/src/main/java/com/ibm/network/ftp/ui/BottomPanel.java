@@ -231,6 +231,7 @@ public static void main(java.lang.String[] args) {
 */
     //To set the background of this panel,
     //when parent's Background property changed
+    @Override
     public void setBackground(java.awt.Color newColor)
     {
         super.setBackground(newColor);

@@ -44,16 +44,19 @@ public class PanelGraphicsChars extends Canvas {
         recomputeSizes = false;
     }
 
+    @Override
     public Dimension getPreferredSize() {
         return getMinimumSize();
     }
 
+    @Override
     public Dimension getMinimumSize() {
         if (recomputeSizes)
             computeSize();
         return minDim;
     }
 
+    @Override
     public void paint(Graphics g) {
         g.drawString("Graphics Chars:", 0, scrData.charHeight);
         for (int k = 0; k < 8; k++)
@@ -116,6 +119,7 @@ public class PanelGraphicsChars extends Canvas {
         final PanelGraphicsChars p2 = this;
 
         fld.addTextListener(new TextListener() {
+            @Override
             public void textValueChanged(TextEvent e) {
                 String s = ((TextField) e.getSource()).getText();
                 int magn = 100;
@@ -133,6 +137,7 @@ public class PanelGraphicsChars extends Canvas {
         frame.add(mainPanel, BorderLayout.CENTER);
         mainPanel.add(p2);
         frame.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 ((Frame) e.getSource()).dispose();
             }
@@ -142,6 +147,7 @@ public class PanelGraphicsChars extends Canvas {
         frame.show();
     }
 
+    @Override
     protected void finalize() throws Throwable {
         if (frame != null) {
             frame.dispose();

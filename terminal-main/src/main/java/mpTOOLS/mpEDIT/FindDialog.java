@@ -115,7 +115,8 @@ class FindDialog extends Dialog implements WindowListener, ActionListener, KeyLi
 		}
 	}
 	
- 	public void itemStateChanged(ItemEvent e)
+ 	@Override
+    public void itemStateChanged(ItemEvent e)
  	{
  		if (e.getSource() == regex)
  		{
@@ -132,19 +133,27 @@ class FindDialog extends Dialog implements WindowListener, ActionListener, KeyLi
  		}
  	}
  	
+    @Override
     public void windowDeiconified(WindowEvent event) {}
+    @Override
     public void windowIconified(WindowEvent event) {}
+    @Override
     public void windowActivated(WindowEvent event) {}
+    @Override
     public void windowDeactivated(WindowEvent event) {}
+    @Override
     public void windowOpened(WindowEvent event) {}
+    @Override
     public void windowClosed(WindowEvent event) {}
+    @Override
     public void windowClosing(WindowEvent event)
 	{
 			textFrame.CloseFindDialog(pattern.getText());
 			dispose();
     }
 
-	public void actionPerformed(ActionEvent evt)
+	@Override
+    public void actionPerformed(ActionEvent evt)
 	{
         if (evt.getSource() == cbutton)
 		{
@@ -157,9 +166,12 @@ class FindDialog extends Dialog implements WindowListener, ActionListener, KeyLi
 			executeFind();
 	}
 
-	public void keyTyped( KeyEvent e ) {}
-	public void keyReleased( KeyEvent e ) {}
-	public void keyPressed( KeyEvent e )
+	@Override
+    public void keyTyped(KeyEvent e ) {}
+	@Override
+    public void keyReleased(KeyEvent e ) {}
+	@Override
+    public void keyPressed(KeyEvent e )
 	{
 		if ( e.getKeyCode() == KeyEvent.VK_ENTER )
 		{

@@ -813,6 +813,7 @@ void eventFromToolbar ( java.awt.event.ActionEvent event) {
 	*
 	* @return  background color of the main user interface window.	
 	*/
+	@Override
 	public java.awt.Color getBackground()
 	{
 		return super.getBackground();
@@ -1187,6 +1188,7 @@ private void initialize() {
  * @param 	fle LocalFileListEvent
  * @see		com.ibm.network.ftp.event.LocalFileListListener
  */
+@Override
 public void localFileListReceived(LocalFileListEvent fle) {
 	//Call MiddlePanel's methods to set
 	//Local current dir & file list
@@ -1387,6 +1389,7 @@ public void localFileListReceived(LocalFileListEvent fle) {
  * @param 	fle RemoteFileListEvent
  * @see		com.ibm.network.ftp.event.RemoteFileListListener
  */
+@Override
 public void remoteFileListReceived(RemoteFileListEvent fle) {
 	//Call MiddlePanel's methods to set
 	//Remote current dir & file list
@@ -1739,6 +1742,7 @@ public void remoteFileListReceived(RemoteFileListEvent fle) {
 	* @param	newColor background color of the user interface.
 	* @exception java.lang.IllegalArgumentException	When the argument for this setter method is null,this exception will be thrown.
 	*/
+	@Override
 	public void setBackground(java.awt.Color newColor) throws IllegalArgumentException
 	{
 		if (newColor!=null)
@@ -2299,6 +2303,7 @@ public void remoteFileListReceived(RemoteFileListEvent fle) {
  * @param 	se StatusEvent
  * @see		com.ibm.network.ftp.event.StatusListener
  */
+@Override
 public void statusReceived(StatusEvent se) {
 	if (se.getMessage()!=null)
 	{

@@ -30,7 +30,7 @@ package mpTOOLS.mpEDIT;
 import java.awt.*;
 import java.awt.event.*;
 
-class TextScroller extends Thread
+public class TextScroller extends Thread
 {
 	private		TextCanvas	canvas;
 
@@ -39,6 +39,7 @@ class TextScroller extends Thread
 		canvas = c;
 	}
 	
+	@Override
 	public void run()
 	{
 		while (true)

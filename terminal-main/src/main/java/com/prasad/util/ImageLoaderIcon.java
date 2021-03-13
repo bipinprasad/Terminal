@@ -46,6 +46,7 @@ public class ImageLoaderIcon implements Icon {
         return image;
     }
 
+    @Override
     public int getIconHeight() {
         if (scaledDimension != null)
             return (int) scaledDimension.getHeight();
@@ -64,6 +65,7 @@ public class ImageLoaderIcon implements Icon {
         }
     }
 
+    @Override
     public int getIconWidth() {
         if (scaledDimension != null)
             return (int) scaledDimension.getWidth();
@@ -82,6 +84,7 @@ public class ImageLoaderIcon implements Icon {
         }
     }
 
+    @Override
     public void paintIcon(Component c, Graphics g, int x, int y) {
         Image img = getImage();
         if (img != null

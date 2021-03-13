@@ -159,6 +159,7 @@ public boolean read(InputStream is) throws java.io.IOException
     return !eof;
 }
 
+@Override
 public String toString()
 {
     String result = super.toString();

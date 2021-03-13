@@ -68,6 +68,7 @@ public class FrameTerminal extends Frame implements ConnectListener {
         pack();
     }
 
+    @Override
     public void dispose() {
         frameList.removeElement(this);
         if (frameList.size() == 0) {
@@ -83,6 +84,7 @@ public class FrameTerminal extends Frame implements ConnectListener {
         menuItemBackgroundImg.setLabel("Background Images");
         menuItemSelectEmulation.setLabel("Select Emulation...");
         menuItemSelectEmulation.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 menuItemSelectEmulation_actionPerformed(e);
             }
@@ -90,6 +92,7 @@ public class FrameTerminal extends Frame implements ConnectListener {
         menuItemBackgroundImg.addActionListener(new FrameTerminal_menuItemBackgroundImg_actionAdapter(this));
         this.setMenuBar(mainMenu);
         this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 this_windowClosing(e);
             }
@@ -110,12 +113,14 @@ public class FrameTerminal extends Frame implements ConnectListener {
         menuItemFileExit.setLabel("Exit");
         menuItemEditCopy.setLabel("Copy");
         menuItemEditCopy.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 menuItemEditCopy_actionPerformed(e);
             }
         });
         menuItemEditPaste.setLabel("Paste");
         menuItemEditPaste.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 menuItemEditPaste_actionPerformed(e);
             }
@@ -139,6 +144,7 @@ public class FrameTerminal extends Frame implements ConnectListener {
         menuItemHelpAbout.setLabel("About Java Terminal");
         menuItemHelpAbout.setActionCommand("About Java Terminal");
         menuItemHelpAbout.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 menuItemHelpAbout_actionPerformed(e);
             }
@@ -160,12 +166,14 @@ public class FrameTerminal extends Frame implements ConnectListener {
         menuItemGraphicsColor.setLabel("Graphics Color...");
         menuItemScreenTree.setLabel("Screen Tree");
         menuItemScreenTree.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 menuItemScreenTree_actionPerformed(e);
             }
         });
         menuItemGraphicsColor.addActionListener(new FrameTerminal_menuItemGraphicsColor_actionAdapter(this));
         menuItemSmartMouseOptions.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 menuItemSmartMouseOptions_actionPerformed(e);
             }
@@ -269,6 +277,7 @@ public class FrameTerminal extends Frame implements ConnectListener {
         panelTerminal.connect(host, port, userid, password);
     }
 
+    @Override
     public void connected() {
         //TODO: implement this prasad.terminal.ConnectListener method;
         menuItemConnect.enable(false);
@@ -276,6 +285,7 @@ public class FrameTerminal extends Frame implements ConnectListener {
         updateTitle();
     }
 
+    @Override
     public void disconnected() {
         //TODO: implement this prasad.terminal.ConnectListener method;
         menuItemConnect.enable(true);
@@ -408,6 +418,7 @@ public class FrameTerminal extends Frame implements ConnectListener {
         FrameTerminal frameTerminal = new FrameTerminal();
         frameTerminal.setApplet(getApplet());
         frameTerminal.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 try {
                     FrameTerminal f = (FrameTerminal) e.getSource();
@@ -514,6 +525,7 @@ public class FrameTerminal extends Frame implements ConnectListener {
         frameFtpDir.setFileListFont(getTextFont());
         frameFtpDir.setTerminalSender(panelTerminal);
         frameFtpDir.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 try {
                     FrameFtpDir f = ((FrameFtpDir) e.getSource());
@@ -619,6 +631,7 @@ class FrameTerminal_menuItemConnect_actionAdapter implements java.awt.event.Acti
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.menuItemConnect_actionPerformed(e);
     }
@@ -633,6 +646,7 @@ class FrameTerminal_chkbxMenuItemDebug_itemAdapter implements java.awt.event.Ite
         this.adaptee = adaptee;
     }
 
+    @Override
     public void itemStateChanged(ItemEvent e) {
         adaptee.chkbxMenuItemDebug_itemStateChanged(e);
     }
@@ -646,6 +660,7 @@ class FrameTerminal_menuItemDisconnect_actionAdapter implements java.awt.event.A
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.menuItemDisconnect_actionPerformed(e);
     }
@@ -659,6 +674,7 @@ class FrameTerminal_menuViewGrapicsChars_actionAdapter implements java.awt.event
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.menuViewGrapicsChars_actionPerformed(e);
     }
@@ -672,6 +688,7 @@ class FrameTerminal_menuViewCharAttrs_actionAdapter implements java.awt.event.Ac
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.menuViewCharAttrs_actionPerformed(e);
     }
@@ -685,6 +702,7 @@ class FrameTerminal_menuItemSetupTextAttrs_actionAdapter implements java.awt.eve
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.menuItemSetupTextAttrs_actionPerformed(e);
     }
@@ -698,6 +716,7 @@ class FrameTerminal_menuItemSetupTextFont_actionAdapter implements java.awt.even
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.menuItemSetupTextFont_actionPerformed(e);
     }
@@ -711,6 +730,7 @@ class FrameTerminal_chkbxMenuItemStatusBar_itemAdapter implements java.awt.event
         this.adaptee = adaptee;
     }
 
+    @Override
     public void itemStateChanged(ItemEvent e) {
         adaptee.chkbxMenuItemStatusBar_itemStateChanged(e);
     }
@@ -724,6 +744,7 @@ class FrameTerminal_chkbxMenuItemToolbar_itemAdapter implements java.awt.event.I
         this.adaptee = adaptee;
     }
 
+    @Override
     public void itemStateChanged(ItemEvent e) {
         adaptee.chkbxMenuItemToolbar_itemStateChanged(e);
     }
@@ -737,6 +758,7 @@ class FrameTerminal_menuItemSetupTermOptions_actionAdapter implements java.awt.e
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.menuItemSetupTermOptions_actionPerformed(e);
     }
@@ -750,6 +772,7 @@ class FrameTerminal_menuItemReadUnixEnv_actionAdapter implements java.awt.event.
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.menuItemReadUnixEnv_actionPerformed(e);
     }
@@ -763,6 +786,7 @@ class FrameTerminal_menuItemSaveInitFile_actionAdapter implements java.awt.event
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.menuItemSaveInitFile_actionPerformed(e);
     }
@@ -776,6 +800,7 @@ class FrameTerminal_menuItemOpenInitFile_actionAdapter implements java.awt.event
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.menuItemOpenInitFile_actionPerformed(e);
     }
@@ -789,6 +814,7 @@ class FrameTerminal_menuItemSaveInitFileAs_actionAdapter implements java.awt.eve
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.menuItemSaveInitFileAs_actionPerformed(e);
     }
@@ -802,6 +828,7 @@ class FrameTerminal_menuItemNewWindow_actionAdapter implements java.awt.event.Ac
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.menuItemNewWindow_actionPerformed(e);
     }
@@ -815,6 +842,7 @@ class FrameTerminal_menuItemGoToWindow_actionAdapter implements java.awt.event.A
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.requestFocus();
     }
@@ -828,6 +856,7 @@ class FrameTerminal_menuItemInstall_actionAdapter implements java.awt.event.Acti
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.menuItemInstall_actionPerformed(e);
     }
@@ -841,6 +870,7 @@ class FrameTerminal_menuItemFTP_actionAdapter implements java.awt.event.ActionLi
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.menuItemFTP_actionPerformed(e);
     }
@@ -854,6 +884,7 @@ class FrameTerminal_menuItemGraphicsColor_actionAdapter implements java.awt.even
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.menuItemGraphicsColor_actionPerformed(e);
     }
@@ -867,6 +898,7 @@ class FrameTerminal_menuItemBackgroundImg_actionAdapter implements java.awt.even
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.menuItemBackgroundImg_actionPerformed(e);
     }

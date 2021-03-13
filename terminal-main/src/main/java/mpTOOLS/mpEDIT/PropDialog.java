@@ -145,7 +145,8 @@ class PropDialog extends Dialog implements WindowListener, ActionListener
 
 	// dispose on 'ok'
 
-    public void actionPerformed(ActionEvent event)
+    @Override
+	public void actionPerformed(ActionEvent event)
 	{
 		
         if (event.getSource() == ok)
@@ -169,14 +170,21 @@ class PropDialog extends Dialog implements WindowListener, ActionListener
 
 	// add the 1.1 WindowListener stuff
 
-    public void windowDeiconified(WindowEvent event) {}
-    public void windowIconified(WindowEvent event) {}
-    public void windowActivated(WindowEvent event) {}
-    public void windowDeactivated(WindowEvent event) {}
-    public void windowOpened(WindowEvent event) {}
-    public void windowClosed(WindowEvent event) {}
+    @Override
+	public void windowDeiconified(WindowEvent event) {}
+    @Override
+	public void windowIconified(WindowEvent event) {}
+    @Override
+	public void windowActivated(WindowEvent event) {}
+    @Override
+	public void windowDeactivated(WindowEvent event) {}
+    @Override
+	public void windowOpened(WindowEvent event) {}
+    @Override
+	public void windowClosed(WindowEvent event) {}
 
-    public void windowClosing(WindowEvent event) {
+    @Override
+	public void windowClosing(WindowEvent event) {
 			dispose();
     }
 

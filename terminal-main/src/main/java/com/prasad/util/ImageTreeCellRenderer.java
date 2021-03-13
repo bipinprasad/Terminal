@@ -23,6 +23,7 @@ public class ImageTreeCellRenderer extends DefaultTreeCellRenderer implements Tr
     //Hashtable              h      = new Hashtable();
 
 
+    @Override
     public Component getTreeCellRendererComponent(
         JTree tree,
         Object value,

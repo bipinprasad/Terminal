@@ -16,6 +16,7 @@ import java.util.*;
 
 public class MakeImage extends HttpServlet {
 
+    @Override
     public void doGet(
         HttpServletRequest request,
         HttpServletResponse response)

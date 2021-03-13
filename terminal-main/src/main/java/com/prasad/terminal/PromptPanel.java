@@ -158,6 +158,7 @@ public class PromptPanel extends Panel implements FocusListener {
     /**
      * Invoked when a component gains the keyboard focus.
      */
+    @Override
     public void focusGained(FocusEvent e) {
 
         // The very first time we acquire focus, move into first field
@@ -170,6 +171,7 @@ public class PromptPanel extends Panel implements FocusListener {
     /**
      * Invoked when a component loses the keyboard focus.
      */
+    @Override
     public void focusLost(FocusEvent e) {
         Object src = e.getSource();
         if (src instanceof TextField) {
@@ -183,6 +185,7 @@ public class PromptPanel extends Panel implements FocusListener {
         }
     }
 
+    @Override
     public void setBackground(Color c) {
         super.setBackground(c);
         for (int i = 0; i < labels.length; i++)
@@ -191,6 +194,7 @@ public class PromptPanel extends Panel implements FocusListener {
             textFields[i].setBackground(c);
     }
 
+    @Override
     public void setForeground(Color c) {
         super.setForeground(c);
         for (int i = 0; i < labels.length; i++)
@@ -211,6 +215,7 @@ public class PromptPanel extends Panel implements FocusListener {
         showSaveCheckBox = flag;
         saveCheckBox.setVisible(flag);
         saveCheckBox.addItemListener(new ItemListener() {
+            @Override
             public void itemStateChanged(ItemEvent e) {
                 setSaveFlag(e.getStateChange() == ItemEvent.SELECTED);
             }

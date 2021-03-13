@@ -45,6 +45,7 @@ public FilterLoader(String a)
 	archive = new String(a);
 }
 
+@Override
 public Class loadClass(String className, boolean resolveIt) throws ClassNotFoundException
 {
 	Class c;

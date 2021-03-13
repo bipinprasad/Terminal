@@ -188,6 +188,7 @@ class Remote extends Protocol {
 	/**
 	 * changeDir method comment.
 	 */
+	@Override
 	public void changeDir(String newDir) {
 		int replycode;
 		//String command;
@@ -364,6 +365,7 @@ class Remote extends Protocol {
 	/**
 	 * deleteDir method comment.
 	 */
+	@Override
 	public void deleteDir(String dirName) {
 		if (state == CONNECTED) {
 			executeCommand("RMD", dirName);
@@ -380,6 +382,7 @@ class Remote extends Protocol {
 	/**
 	 * deleteFile method comment.
 	 */
+	@Override
 	public void deleteFile(String fileName) {
 		int replycode;
 		//String command;
@@ -447,6 +450,7 @@ class Remote extends Protocol {
 	/**
 	 * fileList method comment.
 	 */
+	@Override
 	public java.util.Vector<FileInfo> fileList() {
 		FileInfo fileInfo;
 		Vector<FileInfo> fileList = null;
@@ -601,6 +605,7 @@ class Remote extends Protocol {
 	/**
 	 * getCurrentDir method comment.
 	 */
+	@Override
 	public String getCurrentDir() {
 		int count;
 		//int replycode;
@@ -1040,6 +1045,7 @@ class Remote extends Protocol {
 	/**
 	 * makeDir method comment.
 	 */
+	@Override
 	public void makeDir(String dirName) {
 		//String command;
 		int replycode;
@@ -1166,6 +1172,7 @@ class Remote extends Protocol {
 	/**
 	 * printText method comment.
 	 */
+	@Override
 	protected void printText(String text) {
 		// Send the string received to the parent bean to be sent back
 		// to the User Interface bean
@@ -1404,6 +1411,7 @@ class Remote extends Protocol {
 	/**
 	 * rename method comment.
 	 */
+	@Override
 	public void rename(String oldName, String newName) {
 		int replycode;
 		//String command = null;

@@ -97,14 +97,11 @@ public class VersionDialog extends Dialog {
         okButton.setLabel("Close");
         buttonPanel.add(okButton);
         okButton.setFont(new Font("SansSerif", Font.BOLD, 12));
-        okButton.addActionListener(new ActionListener() {
-            // Handle OK button event. Pops down the dialog box.
-            public void actionPerformed(ActionEvent evt) {
-                setVisible(false);
-            }
-        });
+        // Handle OK button event. Pops down the dialog box.
+        okButton.addActionListener(evt -> setVisible(false));
         okButton.addKeyListener(new KeyAdapter() {
             // Handle return key event. Pops down the dialog box.
+            @Override
             public void keyPressed(KeyEvent event) {
                 if (event.getKeyCode() == KeyEvent.VK_ENTER)
                     setVisible(false);
@@ -118,6 +115,7 @@ public class VersionDialog extends Dialog {
         pack();
     }
 
+    @Override
     protected void processWindowEvent(WindowEvent e) {
         if (e.getID() == WindowEvent.WINDOW_CLOSING) {
             cancel();
@@ -163,6 +161,7 @@ public class VersionDialog extends Dialog {
      *
      * @param c the background color
      **/
+    @Override
     public void setBackground(Color c) {
         if (c != null) {
             super.setBackground(c);
@@ -194,6 +193,7 @@ public class VersionDialog extends Dialog {
             logoImage = laTerm.loadImage("termimgs", "logo1.gif", this, true);
         }
 
+        @Override
         public void paint(Graphics g) {
             if (logoImage != null) {
                 Rectangle rect = getBounds();
@@ -208,10 +208,12 @@ public class VersionDialog extends Dialog {
             }
         }
 
+        @Override
         public Dimension getPreferredSize() {
             return getMinimumSize();
         }
 
+        @Override
         public Dimension getMinimumSize() {
             if (logoImage != null) {
                 int width = logoImage.getWidth(this);

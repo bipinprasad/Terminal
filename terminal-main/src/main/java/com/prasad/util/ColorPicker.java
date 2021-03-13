@@ -201,6 +201,7 @@ public class ColorPicker extends Dialog implements ActionListener, FocusListener
      * Handle gained focus events. (Not used, but needed for FocusListener
      * interface)
      **/
+    @Override
     public void focusGained(FocusEvent event) {
     }
 
@@ -210,6 +211,7 @@ public class ColorPicker extends Dialog implements ActionListener, FocusListener
      *
      * @param event the focus event
      **/
+    @Override
     public void focusLost(FocusEvent event) {
         if (event.getSource() instanceof TextField) {
             int value;
@@ -248,6 +250,7 @@ public class ColorPicker extends Dialog implements ActionListener, FocusListener
      *
      * @param event the action event
      **/
+    @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == redInput ||
             event.getSource() == greenInput ||
@@ -361,6 +364,7 @@ public class ColorPicker extends Dialog implements ActionListener, FocusListener
             repaint();
         }
 
+        @Override
         public void update(Graphics g) {
             paint(g);
         }
@@ -370,6 +374,7 @@ public class ColorPicker extends Dialog implements ActionListener, FocusListener
          *
          * @param c the new bakcground color
          **/
+        @Override
         public void setBackground(Color c) {
             super.setBackground(c);
             colorWheel = null;
@@ -506,6 +511,7 @@ public class ColorPicker extends Dialog implements ActionListener, FocusListener
          *
          * @param g the graphics context
          **/
+        @Override
         public void paint(Graphics g) {
             if (colorWheel == null)
                 colorWheel = makeColorWheel();
@@ -540,6 +546,7 @@ public class ColorPicker extends Dialog implements ActionListener, FocusListener
          *
          * @param event the mouse event
          **/
+        @Override
         public void processMouseEvent(MouseEvent event) {
             if (event.getID() == MouseEvent.MOUSE_PRESSED) {
                 // Subtract off the offsets to make checking easier
@@ -583,6 +590,7 @@ public class ColorPicker extends Dialog implements ActionListener, FocusListener
          *
          * @param event the mouse event
          **/
+        @Override
         public void processMouseMotionEvent(MouseEvent event) {
             if (event.getID() == MouseEvent.MOUSE_DRAGGED) {
                 // Subtract off the offsets to make checking easier
@@ -624,6 +632,7 @@ public class ColorPicker extends Dialog implements ActionListener, FocusListener
         /**
          * Resize the canvas
          **/
+        @Override
         public void setSize(int width, int height) {
             super.setSize(width, height);
             // Compute the offsets to center the components in the canvas
@@ -635,6 +644,7 @@ public class ColorPicker extends Dialog implements ActionListener, FocusListener
         /**
          * Resize the canvas
          **/
+        @Override
         public void setSize(Dimension d) {
             setSize(d.width, d.height);
         }
@@ -642,6 +652,7 @@ public class ColorPicker extends Dialog implements ActionListener, FocusListener
         /**
          * Reshape the canvas
          **/
+        @Override
         public void setBounds(int x, int y, int width, int height) {
             super.setBounds(x, y, width, height);
             // Compute the offsets to center the components in the canvas
@@ -653,6 +664,7 @@ public class ColorPicker extends Dialog implements ActionListener, FocusListener
         /**
          * Reshape the canvas
          **/
+        @Override
         public void setBounds(Rectangle r) {
             setBounds(r.x, r.y, r.width, r.height);
         }
@@ -660,6 +672,7 @@ public class ColorPicker extends Dialog implements ActionListener, FocusListener
         /**
          * Return the minimum size of this component
          **/
+        @Override
         public Dimension getMinimumSize() {
             return getPreferredSize();
         }
@@ -667,6 +680,7 @@ public class ColorPicker extends Dialog implements ActionListener, FocusListener
         /**
          * Return the preferred size of this component
          **/
+        @Override
         public Dimension getPreferredSize() {
             return new Dimension(colorWheelWidth + valueBarWidth + spacing + margins * 2,
                 diameter + selectDiameter + margins * 2);

@@ -87,6 +87,7 @@ public InfoDialog(java.awt.Frame parent, boolean modal) {
 /**
  * actionPerformed method comment.
  */
+@Override
 public void actionPerformed(java.awt.event.ActionEvent e) {
     if (e.getSource().equals(getokBut()) || e.getSource().equals(getokBut2())){
         //Set the response as true
@@ -361,6 +362,7 @@ private void initialize() {
     
     initConnections();
 }
+  @Override
   public void keyPressed(java.awt.event.KeyEvent key)
   {
         if (key.getKeyCode()==java.awt.event.KeyEvent.VK_ENTER)
@@ -377,9 +379,11 @@ private void initialize() {
         }   
         return;
   }                 
+  @Override
   public void keyReleased(java.awt.event.KeyEvent key)
   {
   }         
+  @Override
   public void keyTyped(java.awt.event.KeyEvent key)
   {
   }         
@@ -453,6 +457,7 @@ public static void main(java.lang.String[] args) {
  * @param e java.awt.event.WindowEvent
  */
 /* WARNING: THIS METHOD WILL BE REGENERATED. */
+@Override
 public void windowActivated(java.awt.event.WindowEvent e) {
     // user code begin {1}
     
@@ -475,6 +480,7 @@ public void windowActivated(java.awt.event.WindowEvent e) {
  * @param e java.awt.event.WindowEvent
  */
 /* WARNING: THIS METHOD WILL BE REGENERATED. */
+@Override
 public void windowClosed(java.awt.event.WindowEvent e) {
     // user code begin {1}
     // user code end
@@ -486,6 +492,7 @@ public void windowClosed(java.awt.event.WindowEvent e) {
  * @param e java.awt.event.WindowEvent
  */
 /* WARNING: THIS METHOD WILL BE REGENERATED. */
+@Override
 public void windowClosing(java.awt.event.WindowEvent e) {
     // user code begin {1}
     // user code end
@@ -500,6 +507,7 @@ public void windowClosing(java.awt.event.WindowEvent e) {
  * @param e java.awt.event.WindowEvent
  */
 /* WARNING: THIS METHOD WILL BE REGENERATED. */
+@Override
 public void windowDeactivated(java.awt.event.WindowEvent e) {
     // user code begin {1}
     // user code end
@@ -511,6 +519,7 @@ public void windowDeactivated(java.awt.event.WindowEvent e) {
  * @param e java.awt.event.WindowEvent
  */
 /* WARNING: THIS METHOD WILL BE REGENERATED. */
+@Override
 public void windowDeiconified(java.awt.event.WindowEvent e) {
     // user code begin {1}
     // user code end
@@ -522,6 +531,7 @@ public void windowDeiconified(java.awt.event.WindowEvent e) {
  * @param e java.awt.event.WindowEvent
  */
 /* WARNING: THIS METHOD WILL BE REGENERATED. */
+@Override
 public void windowIconified(java.awt.event.WindowEvent e) {
     // user code begin {1}
     // user code end
@@ -533,6 +543,7 @@ public void windowIconified(java.awt.event.WindowEvent e) {
  * @param e java.awt.event.WindowEvent
  */
 /* WARNING: THIS METHOD WILL BE REGENERATED. */
+@Override
 public void windowOpened(java.awt.event.WindowEvent e) {
     // user code begin {1}
     // user code end

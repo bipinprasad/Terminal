@@ -29,6 +29,7 @@ public class PVTreeCustomizer extends Panel implements Customizer
 		this.setFont(new Font("Dialog", 0, 11));
 
 	}
+	@Override
 	public void paint(Graphics g)
 	{
 		//-------------------------------------
@@ -44,6 +45,7 @@ public class PVTreeCustomizer extends Panel implements Customizer
 		g.drawString("www.protoview.com", 12, 29);
 	}
 
+	@Override
 	public void setObject(Object obj)
 	{
 		target = (PVTree)obj;
@@ -123,6 +125,7 @@ public class PVTreeCustomizer extends Panel implements Customizer
 
 	class LinesItemListener implements ItemListener
 	{
+		@Override
 		public void itemStateChanged(ItemEvent e)
 		{
 			target.setLines(checkLines.getState());
@@ -131,6 +134,7 @@ public class PVTreeCustomizer extends Panel implements Customizer
 	}
 	class ButtonsItemListener implements ItemListener
 	{
+		@Override
 		public void itemStateChanged(ItemEvent e)
 		{
 			target.setButtons(checkButtons.getState());
@@ -139,6 +143,7 @@ public class PVTreeCustomizer extends Panel implements Customizer
 	}
 	class ImagesItemListener implements ItemListener
 	{
+		@Override
 		public void itemStateChanged(ItemEvent e)
 		{
 			target.setImages(checkImages.getState());
@@ -147,6 +152,7 @@ public class PVTreeCustomizer extends Panel implements Customizer
 	}
 	class LinesAtRootItemListener implements ItemListener
 	{
+		@Override
 		public void itemStateChanged(ItemEvent e)
 		{
 			target.setLinesAtRoot(checkLinesAtRoot.getState());
@@ -155,6 +161,7 @@ public class PVTreeCustomizer extends Panel implements Customizer
 	}
 	class EditableItemListener implements ItemListener
 	{
+		@Override
 		public void itemStateChanged(ItemEvent e)
 		{
 			target.setNodeEditing(checkEditable.getState());
@@ -163,6 +170,7 @@ public class PVTreeCustomizer extends Panel implements Customizer
 	}
 	class SortedItemListener implements ItemListener
 	{
+		@Override
 		public void itemStateChanged(ItemEvent e)
 		{
 			target.setSorted(checkSorted.getState());
@@ -172,6 +180,7 @@ public class PVTreeCustomizer extends Panel implements Customizer
 
 	class CaseSensitiveItemListener implements ItemListener
 	{
+		@Override
 		public void itemStateChanged(ItemEvent e)
 		{
 			target.setCaseSensitive(checkCaseSensitive.getState());
@@ -181,6 +190,7 @@ public class PVTreeCustomizer extends Panel implements Customizer
 
 	class BorderStyleItemListener implements ItemListener
 	{
+		@Override
 		public void itemStateChanged(ItemEvent e)
 		{
 			target.setBorderStyle(borderStyle.getSelectedIndex());
@@ -190,6 +200,7 @@ public class PVTreeCustomizer extends Panel implements Customizer
 
 	class NodeIndentationTextListener implements TextListener
 	{
+		@Override
 		public void textValueChanged(TextEvent e)
 		{
 		    String s = nodeIndentation.getText();
@@ -211,6 +222,7 @@ public class PVTreeCustomizer extends Panel implements Customizer
 
 	class BorderWidthTextListener implements TextListener
 	{
+		@Override
 		public void textValueChanged(TextEvent e)
 		{
 		    String s = borderWidth.getText();
@@ -230,11 +242,13 @@ public class PVTreeCustomizer extends Panel implements Customizer
 		}
 	}
 	//----------------------------------------------------------------------
+	@Override
 	public void addPropertyChangeListener(PropertyChangeListener l)
 	{ 
 	    support.addPropertyChangeListener(l); 
 	}
 
+	@Override
 	public void removePropertyChangeListener(PropertyChangeListener l)
 	{ support.removePropertyChangeListener(l); }
 

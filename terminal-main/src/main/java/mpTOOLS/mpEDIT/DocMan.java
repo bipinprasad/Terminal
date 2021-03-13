@@ -143,6 +143,7 @@ class DocMan implements DocInterface
 	 * be discarded, otherwise the user will be queried.
      * @param	bail Exit immediately, discarding changes.
 	 */
+	@Override
 	public void closeDoc(boolean bail)
 	{
 		int i;
@@ -175,6 +176,7 @@ class DocMan implements DocInterface
 	/**
 	 * Writes out this document.
 	 */
+	@Override
 	public void saveDoc()
 	{
 		fileSave(anyFrame());
@@ -184,6 +186,7 @@ class DocMan implements DocInterface
 	 * Writes out this document.
      * @param	pathname New document name (full path).
 	 */
+	@Override
 	public void saveAsDoc(String pathname)
 	{
 		file = new File(pathname);
@@ -197,6 +200,7 @@ class DocMan implements DocInterface
 	 * Returns the full path to this document.
      * @return	Document name (full path).
 	 */
+	@Override
 	public String getPathname()
 	{
 		return file.getPath();
@@ -206,6 +210,7 @@ class DocMan implements DocInterface
 	 * Returns the filename (no path) for this document.
      * @return	Document name (no path).
 	 */
+	@Override
 	public String getFilename()
 	{
 		return file.getName();
@@ -215,6 +220,7 @@ class DocMan implements DocInterface
 	 * Returns status of the document.
      * @return	True if the file has been changed since being written.
 	 */
+	@Override
 	public boolean docChanged()
 	{
 		return dirty;
@@ -223,6 +229,7 @@ class DocMan implements DocInterface
 	/**
 	 *  Get the line count for a document.
 	 */
+	@Override
 	public int getLineCount()
 	{
 		return lines.size();
@@ -236,6 +243,7 @@ class DocMan implements DocInterface
 
 	int nextTag = 123;
 
+	@Override
 	public TagLine tagLine(int line)
 	{
 		LineInfo li = lines.getLineInfo(line);
@@ -252,6 +260,7 @@ class DocMan implements DocInterface
      * @param	color	The Color to display (pass null to clear).
      * @return	The TagLine for a given line.
 	 */
+	@Override
 	public TagLine tagLine(int line, Color color)
 	{
 		LineInfo li = lines.getLineInfo(line);
@@ -269,6 +278,7 @@ class DocMan implements DocInterface
 	 * Get the current line number for a TagLine.
      * @return	The TagLine for a given line.
 	 */
+	@Override
 	public int lineFromTag(TagLine tag)
 	{
 		int i = tag.lastLine;
@@ -299,8 +309,9 @@ class DocMan implements DocInterface
 
 	/**
 	 * Bring forward any view window and scroll to the desired line.
-     * @param	line	The line to display.
+     * @param	tag	The line to display.
 	 */
+	@Override
 	public boolean showLine(TagLine tag)
 	{
 		int line = lineFromTag(tag);
@@ -316,9 +327,10 @@ class DocMan implements DocInterface
 
 	/**
 	 * Get the text for a line.
-     * @param	line	The line to get.
+     * @param	tag	The line to get.
      * @return	The text for the line (null if TagLine not found).
 	 */
+	@Override
 	public String getLine(TagLine tag)
 	{
 		int line = lineFromTag(tag);
@@ -331,10 +343,11 @@ class DocMan implements DocInterface
 
 	/**
 	 * Set the text for a line.
-     * @param	line	The line to set.
-     * @param	text	The text to set.
+     * @param	tag	The line to set.
+     * @param	s	The text to set.
      * @return	Success.
 	 */
+	@Override
 	public boolean setLine(TagLine tag, String s)
 	{
 		int line = lineFromTag(tag);
@@ -356,10 +369,11 @@ class DocMan implements DocInterface
 	
 	/**
 	 * Insert a line of text before the TagLine.
-     * @param	line	The line to set.
-     * @param	text	The text to set.
+     * @param	tag	The line to set.
+     * @param	s	The text to set.
      * @return	Success.
 	 */
+	@Override
 	public boolean addLine(TagLine tag, String s)
 	{
 		int line = lineFromTag(tag);
@@ -381,9 +395,10 @@ class DocMan implements DocInterface
 
 	/**
 	 * Delete a line.
-     * @param	line	The line to delete.
+     * @param	tag	The line to delete.
      * @return	Success.
 	 */
+	@Override
 	public boolean deleteLine(TagLine tag)
 	{
 		int line = lineFromTag(tag);
@@ -406,7 +421,8 @@ class DocMan implements DocInterface
     //
     // sl - A call to display a document in front of all others.    
     // 
-    public void docToTop()
+    @Override
+	public void docToTop()
     {
       TextFrame f = (TextFrame)frames.elementAt(0);
       f.clearCanvas();  
@@ -419,6 +435,7 @@ class DocMan implements DocInterface
 	// sl - reloadDoc - Used to reload an existing/open document back into mpEDIT
 	//      after it has been altered by an external source.
 	
+	  @Override
 	  public void reloadDoc(String filename){
 	    TextFrame textFrame=anyFrame();
 	    file = new File(filename);
@@ -543,7 +560,8 @@ class DocMan implements DocInterface
 		return readOnly;
 	}
 
-	public void setReadOnly( boolean aReadOnly )
+	@Override
+	public void setReadOnly(boolean aReadOnly )
 	{
 		if ( aReadOnly != readOnly )
 		{

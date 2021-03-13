@@ -64,6 +64,7 @@ public class DirSyncFrame extends Frame {
     public static void main(String[] args) {
         DirSyncFrame dirSyncFrame1 = new DirSyncFrame();
         dirSyncFrame1.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent event) {
                 System.exit(0);
             }

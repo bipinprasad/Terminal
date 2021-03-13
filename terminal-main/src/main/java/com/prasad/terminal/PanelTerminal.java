@@ -189,6 +189,7 @@ public class PanelTerminal extends Canvas implements
         return palTerm;
     }
 
+    @Override
     public boolean isFocusTraversable() {
         return true;
     }
@@ -229,6 +230,7 @@ public class PanelTerminal extends Canvas implements
         return terminalType;
     }
 
+    @Override
     public String getTerminalTypeName() {
         switch (terminalType) {
             case TERMINAL_TYPE_PT80:
@@ -283,6 +285,7 @@ public class PanelTerminal extends Canvas implements
      * Invoked when a key has been typed.
      * This event occurs when a key press is followed by a key release.
      */
+    @Override
     public void keyTyped(KeyEvent e) {
         // do not send any characters when the meta-key is down
         if (e.isMetaDown())
@@ -354,6 +357,7 @@ public class PanelTerminal extends Canvas implements
      * Invoked when a key has been pressed.
      */
 
+    @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         int keyChar = e.getKeyChar();
@@ -684,6 +688,7 @@ public class PanelTerminal extends Canvas implements
     /**
      * Invoked when a key has been released.
      */
+    @Override
     public void keyReleased(KeyEvent e) {
         enterPressed = false;
         int keyCode = e.getKeyCode();
@@ -768,6 +773,7 @@ public class PanelTerminal extends Canvas implements
     //private int numCols	= 80;
     //private int numRows	= 27;
 
+    @Override
     public int getNumCols() {
         return scrData.maxCols;
     }
@@ -778,6 +784,7 @@ public class PanelTerminal extends Canvas implements
         invalidate();
     }
 
+    @Override
     public int getTelnetNumRows() {
         return scrData.maxRows - 1;
     }
@@ -817,6 +824,7 @@ public class PanelTerminal extends Canvas implements
             setFont(currentFont);
     }
 
+    @Override
     public void setFont(Font font) {
         if (font == null)
             return;
@@ -844,10 +852,12 @@ public class PanelTerminal extends Canvas implements
         minDim = new Dimension(scrData.maxCharWidth * scrData.maxCols, scrData.charHeight * scrData.maxRows);
     }
 
+    @Override
     public Dimension getPreferredSize() {
         return getMinimumSize();
     }
 
+    @Override
     public Dimension getMinimumSize() {
         if (recomputeSizes)
             computeSize();
@@ -1045,6 +1055,7 @@ public class PanelTerminal extends Canvas implements
     /**
      * Handle focus event
      **/
+    @Override
     public void processFocusEvent(FocusEvent event) {
         if (event.getID() == FocusEvent.FOCUS_GAINED) {
             in_focus = true;
@@ -1165,6 +1176,7 @@ public class PanelTerminal extends Canvas implements
 
     private boolean isConnected;
 
+    @Override
     public void connected() {
         //TODO: implement this prasad.terminal.TelnetInterface method;
         isConnected = true;
@@ -1173,6 +1185,7 @@ public class PanelTerminal extends Canvas implements
         txtOpenClose.setText("OPEN");
     }
 
+    @Override
     public void disconnected() {
         isConnected = false;
         //TODO: implement this prasad.terminal.TelnetInterface method;
@@ -1181,6 +1194,7 @@ public class PanelTerminal extends Canvas implements
         txtOpenClose.setText("CLOSED");
     }
 
+    @Override
     public void receive(char[] d, int off, int len) {
         //TODO: implement this prasad.terminal.TelnetInterface method;
         int cnt = len;
@@ -1192,11 +1206,13 @@ public class PanelTerminal extends Canvas implements
             panelAttrs.repaint();
     }
 
+    @Override
     public void receive(String str) {
         //TODO: implement this prasad.terminal.TelnetInterface method;
         receive(str.toCharArray(), 0, str.length());
     }
 
+    @Override
     public void receive(char c) {
         //TODO: implement this prasad.terminal.TelnetInterface method;
         if (debug)
@@ -1204,6 +1220,7 @@ public class PanelTerminal extends Canvas implements
         terminalWrite(c/*,0*/);
     }
 
+    @Override
     public String sequenceToString(String seq) {
         //TODO: implement this prasad.terminal.TelnetInterface method;
         StringBuffer res = new StringBuffer(128);
@@ -1215,6 +1232,7 @@ public class PanelTerminal extends Canvas implements
         return res.toString();
     }
 
+    @Override
     public String charToString(char c) {
         //TODO: implement this prasad.terminal.TelnetInterface method;
         if (c <= (char) 0x20)
@@ -1245,6 +1263,7 @@ public class PanelTerminal extends Canvas implements
             "$98", "$99", "$9a", "CSI", "ST", "OSC", "PM", "APC"
         };
 
+    @Override
     public void sendKey(int virtualKeyIndex, boolean shift, boolean ctrl) {
         if (virtualKeyIndex >= 0
             && virtualKeyIndex < keyTable.length) {
@@ -1254,6 +1273,7 @@ public class PanelTerminal extends Canvas implements
         }
     }
 
+    @Override
     public void send(char[] d, int off, int len) {
         // all send() methods should check the command state and adjust
         // based on what is lastHostPrompt was
@@ -1286,6 +1306,7 @@ public class PanelTerminal extends Canvas implements
         }
     }
 
+    @Override
     public void send(String str) {
         if (str == null)
             return;
@@ -1310,6 +1331,7 @@ public class PanelTerminal extends Canvas implements
         }
     }
 
+    @Override
     public void send(char c) {
         switch (autodetectModeState) {
             case AUTODETECTMODE_STATE_PROMPT_START:
@@ -1337,6 +1359,7 @@ public class PanelTerminal extends Canvas implements
 
     /* Override this method to handle non-ASCII events -- e.g., cursor
 	 keys, mouse buttons, etc. */
+    @Override
     public synchronized boolean handleEvent(Event e) {
         return false;
     }
@@ -3044,12 +3067,14 @@ public class PanelTerminal extends Canvas implements
             scrData.cursorOffset = scrData.cursorAttrib.insShape * scrData.charHeight / 2;
     }
 
+    @Override
     public void paint(Graphics g) {
         if (scrData.maxCols > 1)
             TermPaintWholeScr(scrData, g, 0, 0, scrData.maxCols - 1, scrData.maxRows);
         drawCaret(scrData.row, scrData.col);
     }
 
+    @Override
     public void update(Graphics g) {
         paint(g);
     }
@@ -3171,12 +3196,14 @@ public class PanelTerminal extends Canvas implements
             telnetConnection.setDebug(debug);
     }
 
+    @Override
     public void focusGained(FocusEvent e) {
         //TODO: implement this java.awt.event.FocusListener method;
         if (scrData != null)
             drawCaret(scrData.caretRow, scrData.caretCol);
     }
 
+    @Override
     public void focusLost(FocusEvent e) {
         //TODO: implement this java.awt.event.FocusListener method;
     }
@@ -4140,6 +4167,7 @@ public class PanelTerminal extends Canvas implements
             Panel panel = new Panel();
             Button button = new Button("Continue");
             button.addActionListener(new ActionListener() {
+                @Override
                 public void actionPerformed(ActionEvent e) {
                     messageDialog.setVisible(false);
                 }
@@ -4233,6 +4261,7 @@ public class PanelTerminal extends Canvas implements
         /**
          * Handle action events from dialog buttons
          **/
+        @Override
         public void actionPerformed(ActionEvent event) {
             if (event.getSource() == okButton)
                 overwriteOK = true;
@@ -4250,6 +4279,7 @@ public class PanelTerminal extends Canvas implements
         }
     } // End of SaveDialog Class
 
+    @Override
     public void mouseClicked(MouseEvent e) {
         //TODO: implement this java.awt.event.MouseListener method;
         int iRow = e.getY() / scrData.charHeight;
@@ -4260,6 +4290,7 @@ public class PanelTerminal extends Canvas implements
         }
     }
 
+    @Override
     public void mousePressed(MouseEvent e) {
         //TODO: implement this java.awt.event.MouseListener method;
         int x = e.getX();
@@ -4321,6 +4352,7 @@ public class PanelTerminal extends Canvas implements
         }
     }
 
+    @Override
     public void mouseReleased(MouseEvent e) {
         //TODO: implement this java.awt.event.MouseListener method;
         int iRow = e.getY() / scrData.charHeight;
@@ -4369,6 +4401,7 @@ public class PanelTerminal extends Canvas implements
         }
     }
 
+    @Override
     public void mouseEntered(MouseEvent e) {
         //	//TODO: implement this java.awt.event.MouseListener method;
         //	int		iRow	= event.getY() / scrData.charHeight;
@@ -4376,6 +4409,7 @@ public class PanelTerminal extends Canvas implements
         //
     }
 
+    @Override
     public void mouseExited(MouseEvent e) {
         //	//TODO: implement this java.awt.event.MouseListener method;
         //int		iRow	= event.getY() / scrData.charHeight;
@@ -4383,6 +4417,7 @@ public class PanelTerminal extends Canvas implements
         //
     }
 
+    @Override
     public void mouseDragged(MouseEvent e) {
         //TODO: implement this java.awt.event.MouseMotionListener method;
         int x = e.getX();
@@ -4504,6 +4539,7 @@ public class PanelTerminal extends Canvas implements
         }
     }
 
+    @Override
     public void mouseMoved(MouseEvent e) {
         //TODO: implement this java.awt.event.MouseMotionListener method;
         int x = e.getX();
@@ -4863,6 +4899,7 @@ public class PanelTerminal extends Canvas implements
             laTreePanel.init();
 
             laTreeFrame.addWindowListener(new WindowAdapter() {
+                @Override
                 public void windowClosing(WindowEvent e) {
                     try {
                         Frame f2 = (Frame) e.getSource();
@@ -4896,6 +4933,7 @@ public class PanelTerminal extends Canvas implements
             options.backgroundImageURLs = new Hashtable();
         frameBackImg.setBackgroundImageURLs(options.backgroundImageURLs);
         frameBackImg.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 try {
                     ((Frame) e.getSource()).setVisible(false);
@@ -4907,6 +4945,7 @@ public class PanelTerminal extends Canvas implements
         frameBackImg.setVisible(true);
     }
 
+    @Override
     public void showLapmForm(String prodLine, String token) {
         //TODO: implement this prasad.terminal.ShowLapmFormInterface method;
         if (cmdMode == CMDMODE_LAWSON_LATREE
@@ -4969,6 +5008,7 @@ public class PanelTerminal extends Canvas implements
         if (frameGetUnixEnv == null) {
             frameGetUnixEnv = new FrameGetUnixEnv(this);
             frameGetUnixEnv.addWindowListener(new WindowAdapter() {
+                @Override
                 public void windowClosing(WindowEvent e) {
                     e.getWindow().setVisible(false);
                 }
@@ -4997,6 +5037,7 @@ public class PanelTerminal extends Canvas implements
     TerminalVputListener[] terminalVputListeners;
     private int terminalVputListenerCnt;
 
+    @Override
     public synchronized void addTerminalVputListener(TerminalVputListener listener) {
         //TODO: implement this prasad.terminal.TerminalSender method;
         if (listener != null) {
@@ -5024,6 +5065,7 @@ public class PanelTerminal extends Canvas implements
         }
     }
 
+    @Override
     public synchronized void removeTerminalVputListener(TerminalVputListener listener) {
         //TODO: implement this prasad.terminal.TerminalSender method;
         if (listener != null
@@ -5052,6 +5094,7 @@ public class PanelTerminal extends Canvas implements
     private boolean paintScreenFlag = true;
     private boolean paintCaretFlag = true;
 
+    @Override
     public void setOptimizeDisplay(boolean repaintScreen, boolean repaintCaret) {
         //TODO: implement this prasad.terminal.TerminalSender method;
         boolean doRepaintScreen = false;
@@ -5142,6 +5185,7 @@ public class PanelTerminal extends Canvas implements
   }
   */
 
+    @Override
     public void lostOwnership(Clipboard clipboard, Transferable contents) {
         //TODO: implement this java.awt.datatransfer.ClipboardOwner method;
     }

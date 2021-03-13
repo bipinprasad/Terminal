@@ -92,6 +92,7 @@ class FrameOptions_btnOk_actionAdapter implements java.awt.event.ActionListener 
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.btnOk_actionPerformed(e);
     }
@@ -105,6 +106,7 @@ class FrameOptions_btnCancel_actionAdapter implements java.awt.event.ActionListe
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.btnCancel_actionPerformed(e);
     }

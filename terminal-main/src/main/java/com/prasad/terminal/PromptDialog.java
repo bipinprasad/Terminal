@@ -85,6 +85,7 @@ public class PromptDialog extends Dialog
         panel.setTextFieldEchoChar(i, ch);
     }
 
+    @Override
     public Dimension getPreferredSize() {
         Dimension d = super.getPreferredSize();
         Insets i = getInsets();
@@ -142,6 +143,7 @@ public class PromptDialog extends Dialog
      * Process Button Event for Ok, Help
      **/
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         processActionEvent(e);
     }
@@ -150,6 +152,7 @@ public class PromptDialog extends Dialog
     /**
      * Process standard dialog accelerators for help,ok,cancel
      */
+    @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE && escapeCancel && (e.getModifiers() & (e.SHIFT_MASK | e.CTRL_MASK | e.ALT_MASK)) == 0)
             processActionEvent(new ActionEvent(e.getSource(), ActionEvent.ACTION_PERFORMED, CANCEL));
@@ -167,12 +170,14 @@ public class PromptDialog extends Dialog
     /**
      *
      */
+    @Override
     public void keyTyped(KeyEvent e) {
     }
 
     /**
      *
      */
+    @Override
     public void keyReleased(KeyEvent e) {
     }
 
@@ -188,6 +193,7 @@ public class PromptDialog extends Dialog
         }
     }
 
+    @Override
     public void setBackground(Color c) {
         super.setBackground(c);
         panel.setBackground(c);
@@ -195,6 +201,7 @@ public class PromptDialog extends Dialog
         cancelButton.setBackground(c);
     }
 
+    @Override
     public void setForeground(Color c) {
         super.setForeground(c);
         panel.setForeground(c);

@@ -110,6 +110,7 @@ class ConnectDialog extends java.awt.Dialog implements
 	/**
 	 * actionPerformed method comment.
 	 */
+	@Override
 	public void actionPerformed(java.awt.event.ActionEvent e) {
 		// Ok button pressed
 		if (e.getSource().equals(getokBut())) {
@@ -552,6 +553,7 @@ class ConnectDialog extends java.awt.Dialog implements
 	 * 
 	 * @return java.awt.Dimension
 	 */
+	@Override
 	public java.awt.Dimension getPreferredSize() {
 		return new java.awt.Dimension(getPanel5().getPreferredSize().width, 100);
 	}
@@ -722,6 +724,7 @@ class ConnectDialog extends java.awt.Dialog implements
 		// user code end
 	}
 
+	@Override
 	public void keyPressed(java.awt.event.KeyEvent key) {
 		if (key.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
 			if (key.getSource().equals(getokBut())
@@ -745,9 +748,11 @@ class ConnectDialog extends java.awt.Dialog implements
 		return;
 	}
 
+	@Override
 	public void keyReleased(java.awt.event.KeyEvent key) {
 	}
 
+	@Override
 	public void keyTyped(java.awt.event.KeyEvent key) {
 	}
 
@@ -832,6 +837,7 @@ class ConnectDialog extends java.awt.Dialog implements
 	 *            java.awt.event.WindowEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
+	@Override
 	public void windowActivated(java.awt.event.WindowEvent e) {
 		// user code begin {1}
 
@@ -851,6 +857,7 @@ class ConnectDialog extends java.awt.Dialog implements
 	 *            java.awt.event.WindowEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
+	@Override
 	public void windowClosed(java.awt.event.WindowEvent e) {
 		// user code begin {1}
 		// user code end
@@ -865,6 +872,7 @@ class ConnectDialog extends java.awt.Dialog implements
 	 *            java.awt.event.WindowEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
+	@Override
 	public void windowClosing(java.awt.event.WindowEvent e) {
 		// user code begin {1}
 		// user code end
@@ -882,6 +890,7 @@ class ConnectDialog extends java.awt.Dialog implements
 	 *            java.awt.event.WindowEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
+	@Override
 	public void windowDeactivated(java.awt.event.WindowEvent e) {
 		// user code begin {1}
 		// user code end
@@ -896,6 +905,7 @@ class ConnectDialog extends java.awt.Dialog implements
 	 *            java.awt.event.WindowEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
+	@Override
 	public void windowDeiconified(java.awt.event.WindowEvent e) {
 		// user code begin {1}
 		// user code end
@@ -910,6 +920,7 @@ class ConnectDialog extends java.awt.Dialog implements
 	 *            java.awt.event.WindowEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
+	@Override
 	public void windowIconified(java.awt.event.WindowEvent e) {
 		// user code begin {1}
 		// user code end
@@ -924,6 +935,7 @@ class ConnectDialog extends java.awt.Dialog implements
 	 *            java.awt.event.WindowEvent
 	 */
 	/* WARNING: THIS METHOD WILL BE REGENERATED. */
+	@Override
 	public void windowOpened(java.awt.event.WindowEvent e) {
 		// user code begin {1}
 		// user code end

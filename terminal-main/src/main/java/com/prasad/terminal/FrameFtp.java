@@ -34,6 +34,7 @@ public class FrameFtp extends Frame // implements CommandListener, LocalFileList
     public static void main(String[] args) {
         FrameFtp frameFtp = new FrameFtp(false, false);
         frameFtp.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 try {
                     System.exit(0);

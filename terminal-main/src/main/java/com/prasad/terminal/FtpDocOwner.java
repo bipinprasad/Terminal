@@ -29,6 +29,7 @@ public class FtpDocOwner implements DocOwnerInterface {
         }
     }
 
+    @Override
     public void savedDoc(DocInterface doc) {
         //TODO: implement this mpTOOLS.mpEDIT.DocOwnerInterface method;
         if (upload
@@ -38,22 +39,27 @@ public class FtpDocOwner implements DocOwnerInterface {
         }
     }
 
+    @Override
     public void savedAsDoc(DocInterface doc, String filename) {
         //TODO: implement this mpTOOLS.mpEDIT.DocOwnerInterface method;
     }
 
+    @Override
     public void openedView(ViewInterface view) {
         //TODO: implement this mpTOOLS.mpEDIT.DocOwnerInterface method;
     }
 
+    @Override
     public void closingView(ViewInterface view) {
         //TODO: implement this mpTOOLS.mpEDIT.DocOwnerInterface method;
     }
 
+    @Override
     public void docAction(DocInterface doc, String action) {
         //TODO: implement this mpTOOLS.mpEDIT.DocOwnerInterface method;
     }
 
+    @Override
     public void viewAction(ViewInterface view, String action) {
         //TODO: implement this mpTOOLS.mpEDIT.DocOwnerInterface method;
     }

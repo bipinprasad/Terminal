@@ -165,18 +165,21 @@ implements	ViewInterface,
 		docMan.sendOpenedView(this);
 	}
 
+	@Override
 	public void lostOwnership(Clipboard clipboard, Transferable contents)
 	{
     }
 
 	protected boolean gotFocus = false;
 
+	@Override
 	public void focusGained(FocusEvent e)
 	{
 		gotFocus = true;
 		release_cursor();
 	}
 
+	@Override
 	public void focusLost(FocusEvent e)
 	{
 		pause_cursor();
@@ -625,6 +628,7 @@ implements	ViewInterface,
 	// Ed's changes are tagged with //ecm ... the dead code
 	// will probably be removed by v1.12
 
+	@Override
 	public synchronized void mousePressed(MouseEvent e)
 	{
 	    // ecm
@@ -754,6 +758,7 @@ implements	ViewInterface,
 	protected int hpix, hepix, hline, heline, hcolumn, hecolumn;
 	protected int lastx,lasty;
 
+	@Override
 	public synchronized void mouseDragged(MouseEvent e)
 	{
 		// ecm copy down below
@@ -1061,6 +1066,7 @@ implements	ViewInterface,
 
 	}
 
+	@Override
 	public synchronized void mouseReleased(MouseEvent e)
 	{
 		if (!mouseDown)
@@ -1079,14 +1085,21 @@ implements	ViewInterface,
 		updateCopyActions(eactive);
 	}
 	
+	@Override
 	public void mouseEntered(MouseEvent e) {}
+	@Override
 	public void mouseExited(MouseEvent e) {}
+	@Override
 	public void mouseClicked(MouseEvent e) {}
+	@Override
 	public void mouseMoved(MouseEvent e) {}
+	@Override
 	public void keyTyped(KeyEvent e) {}
+	@Override
 	public void keyReleased(KeyEvent e) {}
 	
-    public void keyPressed(KeyEvent e)
+    @Override
+	public void keyPressed(KeyEvent e)
 	{
 		int		keyModifiers = e.getModifiers();
 		int		keyCode = e.getKeyCode();
@@ -1362,10 +1375,14 @@ implements	ViewInterface,
 		return false;
 	}
 
+	@Override
 	public void componentHidden(ComponentEvent e) {}
+	@Override
 	public void componentShown(ComponentEvent e) {}
+	@Override
 	public void componentMoved(ComponentEvent e) {}
 
+	@Override
 	public void componentResized(ComponentEvent e)
 	{
 		redoControls(horiz.getValue(), vert.getValue(),true);
@@ -1585,6 +1602,7 @@ rightB:	while ( rightBound < rightMax )
 		return currLine.substring(leftBound, rightBound);
 	}
 
+	@Override
 	public void adjustmentValueChanged(AdjustmentEvent e)
 	{
 		int temp;
@@ -1648,6 +1666,7 @@ rightB:	while ( rightBound < rightMax )
 		copyAction.setEnabled(active);
 	}
 
+	@Override
 	public void update(Graphics g)
 	{ 
 		paint(g);
@@ -1668,6 +1687,7 @@ rightB:	while ( rightBound < rightMax )
 
 	}
 
+	@Override
 	public void paint(Graphics g)
 	{ 
 		if ( !isShowing() )	// why java tries to repaint window during file load ?
@@ -1871,21 +1891,24 @@ rightB:	while ( rightBound < rightMax )
 	{
 		if (id.startsWith("ViewOwner-"))		// create a generic action
 			return new AbstractMpAction(id) {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					sendViewAction(idString);
 				}
 			};
 		else
 		if (id.startsWith("DocOwner-"))			// create a generic action
 			return new AbstractMpAction(id) {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					docMan.sendDocAction(idString);
 				}
 			};
 		else
 		if (id.startsWith("EditOwner-"))		// create a generic action
 			return new AbstractMpAction(id) {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					mpEdit.sendEditAction(idString);
 				}
 			};
@@ -1899,7 +1922,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( undoAction = new
 			AbstractMpAction("undo") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					docMan.undo(textFrame);
 				}
 			}
@@ -1907,6 +1931,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( redoAction = new 
 			AbstractMpAction("redo") {
+				@Override
 				public void actionPerformed(ActionEvent e ) {
 					docMan.redo(textFrame);
 				}
@@ -1915,7 +1940,8 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new 
 			AbstractMpAction("line-swap") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					if ( docMan.getLineCount() - 1 == line )
 						return;
 					docMan.swap_lines(line, line+1);
@@ -1926,7 +1952,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("cursor-up") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					line--;
 					cursorAdjust();
 				}
@@ -1935,7 +1962,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("cursor-down") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					line++;
 					cursorAdjust();
 				}
@@ -1944,7 +1972,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("cursor-forward") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					column++;
 					cursorAdjust();
 				}
@@ -1953,7 +1982,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("cursor-backward") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					column--;
 					cursorAdjust();
 				}
@@ -1962,7 +1992,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("cursor-word-forward") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					_wordForward();
 					cursorAdjust();
 				}
@@ -1971,7 +2002,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("cursor-word-backward") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					_wordBackward();
 					cursorAdjust();
 				}
@@ -1980,7 +2012,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("cursor-line-begin") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					column = 0;
 					cursorAdjust();
 				}
@@ -1989,7 +2022,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("cursor-line-end") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					column = docMan.getLine(line).length();
 					cursorAdjust();
 				}
@@ -1998,7 +2032,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("cursor-page-begin") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					line = sy;
 					cursorAdjust();
 				}
@@ -2007,7 +2042,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("cursor-page-end") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					line = Math.min( docMan.getLineCount() -1, sy + ny -1 );
 					cursorAdjust();
 				}
@@ -2016,7 +2052,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("cursor-document-begin") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					line = 0;
 					cursorAdjust();
 				}
@@ -2025,7 +2062,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("cursor-document-end") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					line = docMan.getLineCount() - 1;
 					cursorAdjust();
 				}
@@ -2034,7 +2072,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("page-up") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					int offset = line - sy;
 					line -= lastVerticalSize;
 					shiftVert(Math.max(line-offset,0));
@@ -2045,7 +2084,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("page-down") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					int offset = line - sy;
 					line += lastVerticalSize;
 					shiftVert(Math.min(line-offset+ny-1, docMan.getLineCount() -1 ));
@@ -2056,7 +2096,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("find-next-forward") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					findAgain(1);
 				}
 		}
@@ -2064,7 +2105,8 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("find-next-backward") {
-				public void actionPerformed( ActionEvent e ) {
+				@Override
+				public void actionPerformed(ActionEvent e ) {
 					findAgain(-1);
 				}
 			}
@@ -2072,6 +2114,7 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("brace-match-forward") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					findMatchingBrace(1);
 				}
@@ -2080,6 +2123,7 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("brace-match-backward") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					findMatchingBrace(-1);
 				}
@@ -2088,6 +2132,7 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("character-delete-forward") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					_pressedDelete();
 				}
@@ -2096,6 +2141,7 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("character-delete-backward") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					_pressedBackspace();
 				}
@@ -2104,6 +2150,7 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("line-break") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					_insertNewline();
 				}
@@ -2112,6 +2159,7 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("line-clone") {
+				@Override
 				public void actionPerformed(ActionEvent e ) {
 					docMan.insert_line( line, docMan.getLine(line));
 					line++;
@@ -2122,6 +2170,7 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("line-delete") {
+				@Override
 				public void actionPerformed(ActionEvent e ) {
 					_deleteLine();
 				}
@@ -2130,6 +2179,7 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("document-save") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					docMan.fileSave(textFrame);
 				}
@@ -2138,6 +2188,7 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("frame-close") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					docMan.closeFrame(textFrame);
 				}
@@ -2146,6 +2197,7 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("mode-autoindent-toggle") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					autoIndent = !autoIndent;
 					textFrame.setMessage("Autindentation turned " + (autoIndent ? "ON" : "OFF"));
@@ -2155,6 +2207,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new
 			AbstractMpAction("document-new") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					mpEdit.newDoc();
 				}
@@ -2163,6 +2216,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new
 			AbstractMpAction("document-open-dialog") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					mpEdit.openDocDialog(docMan,textFrame);
 				}
@@ -2171,6 +2225,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new
 			AbstractMpAction("document-save-as-dialog") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					docMan.fileSaveAs(textFrame);
 				}
@@ -2179,6 +2234,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new
 			AbstractMpAction("document-print-dialog") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					docMan.filePrint(textFrame);
 				}
@@ -2187,6 +2243,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new
 			AbstractMpAction("find-dialog") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					String search = getSelectionOrWordUnderCursor();
 					if ( !search.equals("") )
@@ -2209,6 +2266,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new
 			AbstractMpAction("goto-dialog") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					GotoDialog gotoDialog;
 					gotoDialog = new GotoDialog(textFrame,
@@ -2221,6 +2279,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new
 			AbstractMpAction("replace-dialog") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					ReplaceDialog replaceDialog;
 					replaceDialog = new ReplaceDialog(textFrame,
@@ -2234,6 +2293,7 @@ rightB:	while ( rightBound < rightMax )
 	
 		addToDict( copyAction = new
 			AbstractMpAction("selection-copy") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					String srcData = copy(false,false);
 					if (srcData != null)
@@ -2247,6 +2307,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( cutAction = new
 			AbstractMpAction("selection-cut") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					String srcData = copy(true,true);
 					if (srcData != null)
@@ -2260,6 +2321,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new
 			AbstractMpAction("buffer-paste") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					String dstData;
 			        Transferable content = clipboard.getContents(textMenu);
@@ -2282,6 +2344,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new
 			AbstractMpAction("properties-dialog") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					PropDialog pd = new PropDialog(textFrame,strings,docMan,strings.getString("DialogProps"));
 					pd.show();
@@ -2291,6 +2354,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new
 			AbstractMpAction("frame-clone") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					Dimension size = mpEdit.getWindowSize();
 					Point place = mpEdit.getPlace(size);
@@ -2303,6 +2367,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new
 			AbstractMpAction("help-about-dialog") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					AboutDialog ab = new AboutDialog(textFrame,strings,strings.getString("DialogAbout"));
 					ab.show();
@@ -2312,6 +2377,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new
 			AbstractMpAction("mode-readonly-toggle") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					docMan.setReadOnly(!docMan.isReadOnly());
 				}
@@ -2320,6 +2386,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new
 			AbstractMpAction("selection-indent") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					// maybe allow something else instead of tab ?
 					// this should have its own undo routine
@@ -2338,6 +2405,7 @@ rightB:	while ( rightBound < rightMax )
 						
 		addToDict( new
 			AbstractMpAction("selection-unindent") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					if (!hactive)
 						return;
@@ -2367,6 +2435,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new
 			AbstractMpAction("anchor-drop") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					anchors.addElement(docMan.tagLine(line));
 					currentAnchor = anchors.size()-1;
@@ -2377,6 +2446,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new
 			AbstractMpAction("anchor-goto-last") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					int nanchor = anchors.size();
 					if ( nanchor == 0 )
@@ -2428,6 +2498,7 @@ rightB:	while ( rightBound < rightMax )
 		//	+	cursor-select-forward
 		addToDict( new
 			AbstractMpAction("cursor-select-forward") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					if (!eactive) {
 						cline = line;
@@ -2452,6 +2523,7 @@ rightB:	while ( rightBound < rightMax )
 		//	+	cursor-select-backward
 		addToDict( new
 			AbstractMpAction("cursor-select-backward") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					if (!eactive) {
 						cline = line;
@@ -2475,6 +2547,7 @@ rightB:	while ( rightBound < rightMax )
 		//	+	cursor-select-up
 		addToDict( new
 			AbstractMpAction("cursor-select-up") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					if (!eactive) {
 						cline = line;
@@ -2493,6 +2566,7 @@ rightB:	while ( rightBound < rightMax )
 		//	+	cursor-select-down
 		addToDict( new
 			AbstractMpAction("cursor-select-down") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					if (!eactive) {
 						cline = line;
@@ -2512,6 +2586,7 @@ rightB:	while ( rightBound < rightMax )
 		//	+	cursor-select-word-backward
 		addToDict( new
 			AbstractMpAction("cursor-select-word-backward") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
         			String whole = null;
 					if (!eactive) {
@@ -2561,6 +2636,7 @@ rightB:	while ( rightBound < rightMax )
 		//	+	cursor-select-word-forward
 		addToDict( new
 			AbstractMpAction("cursor-select-word-forward") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
         			String whole = null;
 					if (!eactive) {
@@ -2610,6 +2686,7 @@ rightB:	while ( rightBound < rightMax )
 		//	+	cursor-select-document-begin
 		addToDict( new
 			AbstractMpAction("cursor-select-document-begin") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					if (!eactive) {
 						cline = line;
@@ -2628,6 +2705,7 @@ rightB:	while ( rightBound < rightMax )
 		//	+	cursor-select-document-end
 		addToDict( new
 			AbstractMpAction("cursor-select-document-end") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					if (!eactive) {
 						cline = line;
@@ -2646,6 +2724,7 @@ rightB:	while ( rightBound < rightMax )
 		//	+	cursor-select-line-begin
 		addToDict( new
 			AbstractMpAction("cursor-select-line-begin") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					if (!eactive) {
 						cline = line;
@@ -2664,6 +2743,7 @@ rightB:	while ( rightBound < rightMax )
 		//	+	cursor-select-line-end
 		addToDict( new
 			AbstractMpAction("cursor-select-line-end") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					if (!eactive) {
 						cline = line;
@@ -2683,6 +2763,7 @@ rightB:	while ( rightBound < rightMax )
 		
 		addToDict( new
 			AbstractMpAction("macro-record-toggle") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					if (recordingMacro)
 					{
@@ -2716,6 +2797,7 @@ rightB:	while ( rightBound < rightMax )
 
 		addToDict( new
 			AbstractMpAction("macro-replay") {
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					if ( recordingMacro )
 					{
@@ -2773,6 +2855,7 @@ rightB:	while ( rightBound < rightMax )
 			letter = aLetter;
 		}
 
+		@Override
 		public void actionPerformed( ActionEvent evt )
 		{
 				if (hactive)
@@ -2786,6 +2869,7 @@ rightB:	while ( rightBound < rightMax )
         		textFrame.setLine(line);
 		}
 
+		@Override
 		public String getIdString()
 		{
 			return "character-insert-" + letter;
@@ -2995,12 +3079,14 @@ rightB:	while ( rightBound < rightMax )
 
 // --------------------- ViewInterface implementation -----------------
 
+	@Override
 	public DocInterface getDocument()
 	{
 		return docMan;
 	}
 
-	public void setStatusMessage( String txt )
+	@Override
+	public void setStatusMessage(String txt )
 	{
 		textFrame.setMessage(txt);
 	}

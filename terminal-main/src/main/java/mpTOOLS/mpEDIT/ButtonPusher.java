@@ -37,6 +37,7 @@ public class ButtonPusher extends Thread
 		listener = aListener;
 	}
 
+	@Override
 	public void run()
 	{
 		listener.actionPerformed(

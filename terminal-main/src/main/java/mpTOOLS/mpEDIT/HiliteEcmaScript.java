@@ -81,7 +81,8 @@ public class HiliteEcmaScript extends Hilite
 			keys[i] = temp[i].toCharArray();
 	}
 
-	protected void scanLine(int i)
+	@Override
+    protected void scanLine(int i)
 	{
 		char	c,d,e;
 		String	w;

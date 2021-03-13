@@ -51,8 +51,10 @@ public abstract class AbstractMpAction implements MpAction
 		idString = aIdString;
 	}
 	
-	public abstract void actionPerformed( ActionEvent e );
+	@Override
+	public abstract void actionPerformed(ActionEvent e );
 
+	@Override
 	public String getIdString()
 	{
 		return idString;
@@ -64,24 +66,28 @@ public abstract class AbstractMpAction implements MpAction
 			propertyChangeSupport = new PropertyChangeSupport(this);
 	}
 
+	@Override
 	public boolean isEnabled()
 	{
 		return enabled;
 	}
 
-	public void setEnabled( boolean b )
+	@Override
+	public void setEnabled(boolean b )
 	{
 		ensureChangeSupport();
 		propertyChangeSupport.firePropertyChange( ENABLED, new Boolean(enabled), new Boolean(b) );
 		enabled = b;
 	}
 
+	@Override
 	public void addPropertyChangeListener(PropertyChangeListener listener)
 	{
 		ensureChangeSupport();
 		propertyChangeSupport.addPropertyChangeListener(listener);
 	}
 
+	@Override
 	public void removePropertyChangeListener(PropertyChangeListener listener)
 	{
 		if (propertyChangeSupport != null)

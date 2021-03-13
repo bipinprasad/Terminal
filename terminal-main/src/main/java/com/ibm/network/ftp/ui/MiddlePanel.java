@@ -87,6 +87,7 @@ public MiddlePanel(java.awt.LayoutManager layout) {
 /**
  * actionPerformed method comment.
  */
+@Override
 public void actionPerformed(java.awt.event.ActionEvent e) {
     Object source=e.getSource();
     
@@ -706,6 +707,7 @@ private void initialize() {
 /**
  * itemStateChanged method comment.
  */
+@Override
 public void itemStateChanged(java.awt.event.ItemEvent e) {
     Object source=e.getSource();
     
@@ -783,23 +785,27 @@ public static void main(java.lang.String[] args) {
  //This method is for,doing change focus, when the 
  //2 lists are empty & mouse is clicked on the list
  
+@Override
 public void mouseClicked(java.awt.event.MouseEvent e) {
     return;
 }
 /**
  * mouseEntered method comment.
  */
+@Override
 public void mouseEntered(java.awt.event.MouseEvent e) {
     
 }
 /**
  * mouseExited method comment.
  */
+@Override
 public void mouseExited(java.awt.event.MouseEvent e) {
 }
 /**
  * mousePressed method comment.
  */
+@Override
 public void mousePressed(java.awt.event.MouseEvent e) {
     Object source=e.getSource();
     //If local list,set the parent's selected as false
@@ -850,6 +856,7 @@ public void mousePressed(java.awt.event.MouseEvent e) {
 /**
  * mouseReleased method comment.
  */
+@Override
 public void mouseReleased(java.awt.event.MouseEvent e) {
 }   
 /**
@@ -897,6 +904,7 @@ public void refresh() {
     //To set the background of this panel,
     //when parent's Background property changed
     
+    @Override
     public void setBackground(java.awt.Color newColor)
     {
         super.setBackground(newColor);

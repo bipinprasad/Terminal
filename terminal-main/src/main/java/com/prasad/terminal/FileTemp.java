@@ -38,6 +38,7 @@ public class FileTemp extends File {
         this.isIE = isIE;
     }
 
+    @Override
     public boolean delete() {
         // get browser permission
         // need to get out of the sandbox when running from a jar file on local machine

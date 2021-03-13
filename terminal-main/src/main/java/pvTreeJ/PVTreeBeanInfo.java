@@ -9,6 +9,7 @@ public class PVTreeBeanInfo extends SimpleBeanInfo {
 
       // Get the appropriate icon
 
+      @Override
       public java.awt.Image getIcon(int iconKind) {
         if (iconKind == BeanInfo.ICON_COLOR_16x16) {
           java.awt.Image img = loadImage("PVTree16.gif");
@@ -21,6 +22,7 @@ public class PVTreeBeanInfo extends SimpleBeanInfo {
         return null;
       }
 
+      @Override
       public PropertyDescriptor[] getPropertyDescriptors() {
      	try
 		{
@@ -102,7 +104,8 @@ public class PVTreeBeanInfo extends SimpleBeanInfo {
           }
       }
 
-  	public BeanDescriptor getBeanDescriptor()
+  	@Override
+    public BeanDescriptor getBeanDescriptor()
 	{
 		return new BeanDescriptor(beanClass, PVTreeCustomizer.class);
 	}

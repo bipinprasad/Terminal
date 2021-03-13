@@ -50,11 +50,13 @@ class KeyObject
 		return (key & 0x0000FFFF);
 	}
 
+	@Override
 	public int hashCode()
 	{
 		return key;
 	}
 
+	@Override
     public boolean equals(Object obj)
 	{
 		return obj instanceof KeyObject && ((KeyObject)obj).key == this.key;

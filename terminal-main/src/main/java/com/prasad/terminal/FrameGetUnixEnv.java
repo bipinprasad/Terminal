@@ -122,6 +122,7 @@ public class FrameGetUnixEnv extends Frame implements TerminalVputListener {
         terminalSender = sender;
     }
 
+    @Override
     public void setBackground(Color c) {
         super.setBackground(c);
 
@@ -144,6 +145,7 @@ public class FrameGetUnixEnv extends Frame implements TerminalVputListener {
         textAreaEnv.setBackground(c);
     }
 
+    @Override
     public void setForeground(Color c) {
         super.setForeground(c);
 
@@ -190,6 +192,7 @@ public class FrameGetUnixEnv extends Frame implements TerminalVputListener {
     private static final int STATE_RESPONSE_END = 3;
 
 
+    @Override
     public void vput(Graphics g, int ch) {
         //TODO: implement this prasad.terminal.TerminalVputListener method;
         if (!active)
@@ -355,6 +358,7 @@ public class FrameGetUnixEnv extends Frame implements TerminalVputListener {
             }
         }
 
+        @Override
         public String toString() {
             StringBuffer sb = new StringBuffer();
             if (loginId != null)
@@ -397,6 +401,7 @@ public class FrameGetUnixEnv extends Frame implements TerminalVputListener {
     }
 
     class ResponseTimeoutThread extends Thread {
+        @Override
         public void run() {
             int cnt = 0;
             while (waitTime < waitTimeout) {
@@ -451,6 +456,7 @@ class FrameGetUnixEnv_btnAdvanced_actionAdapter implements java.awt.event.Action
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.btnAdvanced_actionPerformed(e);
     }
@@ -464,6 +470,7 @@ class FrameGetUnixEnv_btnGetEnv_actionAdapter implements java.awt.event.ActionLi
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.btnGetEnv_actionPerformed(e);
     }
@@ -477,6 +484,7 @@ class FrameGetUnixEnv_btnClose_actionAdapter implements java.awt.event.ActionLis
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.btnClose_actionPerformed(e);
     }

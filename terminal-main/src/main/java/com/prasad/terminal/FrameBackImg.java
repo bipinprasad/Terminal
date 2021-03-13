@@ -99,6 +99,7 @@ public class FrameBackImg extends Frame {
 
         FrameBackImg frame = new FrameBackImg(palTerm);
         frame.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
             }
@@ -113,22 +114,26 @@ public class FrameBackImg extends Frame {
         this.setTitle("Background Images");
         btnPreview.setLabel("Preview");
         btnPreview.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 btnPreview_actionPerformed(e);
             }
         });
         flowLayout1.setVgap(15);
         listImgFiles.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 listImgFiles_keyPressed(e);
             }
         });
         listCmds.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 listCmds_keyPressed(e);
             }
         });
         listImgFiles.addItemListener(new java.awt.event.ItemListener() {
+            @Override
             public void itemStateChanged(ItemEvent e) {
                 listImgFiles_itemStateChanged(e);
             }
@@ -139,29 +144,34 @@ public class FrameBackImg extends Frame {
         lblImgFile2.setText("Image File");
         txtImgFile.setColumns(32);
         txtImgFile.addTextListener(new java.awt.event.TextListener() {
+            @Override
             public void textValueChanged(TextEvent e) {
                 txtImgFile_textValueChanged(e);
             }
         });
         btnBrowseImg.setLabel("Browse");
         btnBrowseImg.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 btnBrowseImg_actionPerformed(e);
             }
         });
         btnDelete.setLabel("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 btnDelete_actionPerformed(e);
             }
         });
         btnAdd.setLabel("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 btnAdd_actionPerformed(e);
             }
         });
         txtImgFile.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
             public void focusLost(FocusEvent e) {
                 txtImgFile_focusLost(e);
             }
@@ -170,11 +180,13 @@ public class FrameBackImg extends Frame {
         lblCmd2.setText("Command:");
         txtCmd.setColumns(32);
         txtCmd.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
             public void focusLost(FocusEvent e) {
                 txtCmd_focusLost(e);
             }
         });
         listCmds.addItemListener(new java.awt.event.ItemListener() {
+            @Override
             public void itemStateChanged(ItemEvent e) {
                 listCmds_itemStateChanged(e);
             }
@@ -182,6 +194,7 @@ public class FrameBackImg extends Frame {
         flowLayout1.setHgap(15);
         btnCancel.setLabel("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 btnCancel_actionPerformed(e);
             }
@@ -190,6 +203,7 @@ public class FrameBackImg extends Frame {
         panelMiddle.setLayout(gridBagLayout1);
         btnOk.setLabel("Ok");
         btnOk.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 btnOk_actionPerformed(e);
             }
@@ -493,6 +507,7 @@ public class FrameBackImg extends Frame {
             previewPanel = new PreviewPanel();
             previewFrame.add(previewPanel, BorderLayout.CENTER);
             previewFrame.addWindowListener(new WindowAdapter() {
+                @Override
                 public void windowClosing(WindowEvent e) {
                     try {
                         Frame f = (Frame) e.getSource();
@@ -618,6 +633,7 @@ public class FrameBackImg extends Frame {
             unTiledImage = img;
         }
 
+        @Override
         public void paint(Graphics g2) {
             super.paint(g2);
             if (unTiledImage != null) {

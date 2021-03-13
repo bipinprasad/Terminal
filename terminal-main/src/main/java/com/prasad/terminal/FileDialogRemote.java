@@ -96,6 +96,7 @@ class FileDialogRemote extends Dialog implements ItemListener, ActionListener {
         add(panel, constr);
 
         addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 dispose();
             }
@@ -251,6 +252,7 @@ class FileDialogRemote extends Dialog implements ItemListener, ActionListener {
     /**
      * Handle item events from file listbox
      **/
+    @Override
     public void itemStateChanged(ItemEvent event) {
         try {
             if (event.getStateChange() == ItemEvent.SELECTED
@@ -265,6 +267,7 @@ class FileDialogRemote extends Dialog implements ItemListener, ActionListener {
     /**
      * Handle action events from buttons
      **/
+    @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getActionCommand().equals("Cancel"))
             nameField.setText("");
@@ -292,6 +295,7 @@ class FileDialogRemote extends Dialog implements ItemListener, ActionListener {
             this.fileList = fileList;
         }
 
+        @Override
         public void processLine(String line) {
             if (line.startsWith("ERROR:"))
                 statusLabel.setText(line.substring(6));

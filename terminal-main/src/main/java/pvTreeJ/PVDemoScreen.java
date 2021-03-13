@@ -92,7 +92,8 @@ class PVDemoScreen extends Window implements Runnable
 		if(iDot + 3 < iLen)
 			title += (" " + str.substring(iDot + 3, iLen));
 	}
-	public void run()
+	@Override
+    public void run()
 	{
 		remove(ok);
 		synchronized(thread)
@@ -115,7 +116,8 @@ class PVDemoScreen extends Window implements Runnable
 			dispose();
 		}
 	}
-	public synchronized void paint(Graphics g)
+	@Override
+    public synchronized void paint(Graphics g)
 	{ 
 		paintIt(g); 
 		if(ok == null)
@@ -268,7 +270,8 @@ class PVDemoScreen extends Window implements Runnable
 		gr.drawImage(im, 0, 0, this);
 	}
 
-	public boolean handleEvent(Event evt)
+	@Override
+    public boolean handleEvent(Event evt)
 	{
 		if(evt.id == Event.ACTION_EVENT) 
 		{

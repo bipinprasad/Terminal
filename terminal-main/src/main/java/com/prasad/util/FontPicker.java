@@ -213,6 +213,7 @@ public class FontPicker extends Dialog implements ActionListener, ItemListener {
     /**
      * Return the current font selected in the dialog
      **/
+    @Override
     public Font getFont() {
         return currentFont;
     }
@@ -222,6 +223,7 @@ public class FontPicker extends Dialog implements ActionListener, ItemListener {
      *
      * @param font the new font
      **/
+    @Override
     public void setFont(Font font) {
         if (font != null) {
             currentFont = font;
@@ -299,6 +301,7 @@ public class FontPicker extends Dialog implements ActionListener, ItemListener {
      *
      * @param color the new color
      **/
+    @Override
     public void setBackground(Color color) {
         if (color != null) {
             super.setBackground(color);
@@ -387,6 +390,7 @@ public class FontPicker extends Dialog implements ActionListener, ItemListener {
      *
      * @param event the item event
      **/
+    @Override
     public void itemStateChanged(ItemEvent event) {
         String family = currentFont.getFamily();
         int style = currentFont.getStyle();
@@ -416,6 +420,7 @@ public class FontPicker extends Dialog implements ActionListener, ItemListener {
      *
      * @param event the action event
      **/
+    @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == cancelButton)
             currentFont = null;
@@ -425,6 +430,7 @@ public class FontPicker extends Dialog implements ActionListener, ItemListener {
     /**
      * Handle window events
      **/
+    @Override
     public void processWindowEvent(WindowEvent event) {
         if (event.getID() == WindowEvent.WINDOW_CLOSING) {
             setVisible(false);

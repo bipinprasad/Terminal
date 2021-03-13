@@ -43,6 +43,7 @@ public class ToolBar extends Container
 		add(new ToolButton(null, null, null, null, null));
 	}
 
+	@Override
 	public void paint(Graphics g)
 	{
 		Rectangle cr = getBounds();

@@ -77,6 +77,7 @@ public class FrameInstall extends Frame {
     public static void main(String[] args) {
         FrameInstall frameInstall = new FrameInstall();
         frameInstall.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 try {
                     System.exit(0);
@@ -149,6 +150,7 @@ public class FrameInstall extends Frame {
         txtSrcDir.setColumns(32);
         btnBrowseSrcDir.setLabel("Browse");
         btnBrowseSrcDir.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 btnBrowseSrcDir_actionPerformed(e);
             }
@@ -353,6 +355,7 @@ public class FrameInstall extends Frame {
         if (fixedFont != null)
             frameFtpDir.setFileListFont(fixedFont);
         frameFtpDir.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 FrameFtpDir f = ((FrameFtpDir) e.getSource());
                 f.cleanup();
@@ -799,6 +802,7 @@ public class FrameInstall extends Frame {
         debug = flag;
     }
 
+    @Override
     public void setBackground(Color c) {
         super.setBackground(c);
 
@@ -843,6 +847,7 @@ public class FrameInstall extends Frame {
         lblMessage.setBackground(c);
     }
 
+    @Override
     public void setForeground(Color c) {
         super.setForeground(c);
 
@@ -1011,6 +1016,7 @@ public class FrameInstall extends Frame {
         frameFtpDir.setShowRemote(!clientInstall);
         frameFtpDir.setShowLocal(clientInstall);
         frameFtpDir.setDirSelectListener(new DirSelectListener() {
+            @Override
             public void dirSelected(Frame frame, String dir, boolean isDir) {
                 if (dir != null) {
                     if (isDir)
@@ -1029,6 +1035,7 @@ public class FrameInstall extends Frame {
             }
         });
         frameFtpDir.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 FrameFtpDir f = ((FrameFtpDir) e.getSource());
                 f.cleanup();
@@ -1090,6 +1097,7 @@ public class FrameInstall extends Frame {
         if (fixedFont != null)
             frameFtpDir.setFileListFont(fixedFont);
         frameFtpDir.setDirSelectListener(new DirSelectListener() {
+            @Override
             public void dirSelected(Frame frame, String dir, boolean isDir) {
                 if (dir != null) {
                     if (isDir)
@@ -1108,6 +1116,7 @@ public class FrameInstall extends Frame {
             }
         });
         frameFtpDir.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 FrameFtpDir f = ((FrameFtpDir) e.getSource());
                 f.cleanup();
@@ -1153,6 +1162,7 @@ class FrameInstall_btnInstall_actionAdapter implements java.awt.event.ActionList
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.btnInstall_actionPerformed(e);
     }
@@ -1166,6 +1176,7 @@ class FrameInstall_chkbxClientInstall_itemAdapter implements java.awt.event.Item
         this.adaptee = adaptee;
     }
 
+    @Override
     public void itemStateChanged(ItemEvent e) {
         adaptee.chkbxClientInstall_itemStateChanged(e);
     }
@@ -1179,6 +1190,7 @@ class FrameInstall_btnBrowseDestDir_actionAdapter implements java.awt.event.Acti
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.btnBrowseDestDir_actionPerformed(e);
     }

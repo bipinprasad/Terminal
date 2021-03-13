@@ -26,6 +26,7 @@ public class TransferFileSpec {
         //isDir	= isDirectory;
     }
 
+    @Override
     public Object clone() {
         return new TransferFileSpec(pattern, binary);
     }

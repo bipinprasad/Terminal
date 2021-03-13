@@ -155,6 +155,7 @@ class FrameChangeAttr_btnOk_actionAdapter implements java.awt.event.ActionListen
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.btnOk_actionPerformed(e);
     }
@@ -168,6 +169,7 @@ class FrameChangeAttr_btnCancel_actionAdapter implements java.awt.event.ActionLi
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.btnCancel_actionPerformed(e);
     }
@@ -181,6 +183,7 @@ class FrameChangeAttr_panelFore_mouseAdapter extends java.awt.event.MouseAdapter
         this.adaptee = adaptee;
     }
 
+    @Override
     public void mouseClicked(MouseEvent e) {
         adaptee.panelFore_mouseClicked(e);
     }
@@ -194,6 +197,7 @@ class FrameChangeAttr_panelBack_mouseAdapter extends java.awt.event.MouseAdapter
         this.adaptee = adaptee;
     }
 
+    @Override
     public void mouseClicked(MouseEvent e) {
         adaptee.panelBack_mouseClicked(e);
     }

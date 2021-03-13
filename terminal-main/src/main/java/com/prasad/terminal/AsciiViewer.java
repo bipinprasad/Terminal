@@ -122,6 +122,7 @@ public class AsciiViewer extends Frame implements ClipboardOwner {
         debug = b;
     }
 
+    @Override
     public void lostOwnership(Clipboard clipboard, Transferable contents) {
         //TODO: implement this java.awt.datatransfer.ClipboardOwner method;
     }

@@ -231,6 +231,7 @@ class FrameTextAttr_btnOk_actionAdapter implements java.awt.event.ActionListener
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.btnOk_actionPerformed(e);
     }
@@ -244,6 +245,7 @@ class FrameTextAttr_btnCancel_actionAdapter implements java.awt.event.ActionList
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.btnCancel_actionPerformed(e);
     }
@@ -257,6 +259,7 @@ class FrameTextAttr_btnModify_actionAdapter implements java.awt.event.ActionList
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.btnModify_actionPerformed(e);
     }

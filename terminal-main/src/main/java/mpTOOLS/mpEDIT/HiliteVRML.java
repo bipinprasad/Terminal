@@ -323,7 +323,8 @@ public class HiliteVRML extends Hilite
 			keys2[i] = temp2[i].toCharArray();
 	}
 
-	protected void scanLine(int i)
+	@Override
+    protected void scanLine(int i)
 	{
 		char	c,d,e;
 		String	w;

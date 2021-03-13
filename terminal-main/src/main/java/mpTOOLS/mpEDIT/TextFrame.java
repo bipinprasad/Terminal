@@ -187,6 +187,7 @@ public class TextFrame extends Frame implements WindowListener
 
 	// add current filename to window title
 
+	@Override
 	public void setTitle(String name)
 	{
 		super.setTitle("mpEDIT - " + name);
@@ -214,21 +215,28 @@ public class TextFrame extends Frame implements WindowListener
 		return activeMillis;
 	}
 
-    public void windowDeiconified(WindowEvent event) {}
-    public void windowIconified(WindowEvent event) {}
+    @Override
+	public void windowDeiconified(WindowEvent event) {}
+    @Override
+	public void windowIconified(WindowEvent event) {}
 
-    public void windowActivated(WindowEvent event) {
+    @Override
+	public void windowActivated(WindowEvent event) {
 		activeMillis = System.currentTimeMillis();
     }
 
-    public void windowDeactivated(WindowEvent event) {
+    @Override
+	public void windowDeactivated(WindowEvent event) {
 		activeMillis = 0;
 	}
 
-    public void windowOpened(WindowEvent event) {}
-    public void windowClosed(WindowEvent event) {}
+    @Override
+	public void windowOpened(WindowEvent event) {}
+    @Override
+	public void windowClosed(WindowEvent event) {}
 
-    public void windowClosing(WindowEvent event) {
+    @Override
+	public void windowClosing(WindowEvent event) {
 		docMan.closeFrame(this);
     }
 }

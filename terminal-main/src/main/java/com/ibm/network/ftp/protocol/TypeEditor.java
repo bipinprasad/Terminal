@@ -11,6 +11,7 @@
 package com.ibm.network.ftp.protocol;
 import java.beans.*;
 public class TypeEditor extends PropertyEditorSupport {
+		 @Override
 		 public String getAsText() {
 				// Should localize this.
 				if (((String)getValue()).equals("ASCII")) {
@@ -19,10 +20,12 @@ public class TypeEditor extends PropertyEditorSupport {
 						return ("BINARY");
 				}
 		}
+		@Override
 		public String[] getTags() {
 				String result[] = { "ASCII", "BINARY" };
 				return result;
 		}
+		@Override
 		public void setAsText(String text) throws IllegalArgumentException {
 				if (text.equals("ASCII")) {
 						setValue("ASCII");

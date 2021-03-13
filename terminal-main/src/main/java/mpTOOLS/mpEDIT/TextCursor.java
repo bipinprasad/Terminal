@@ -43,6 +43,7 @@ class TextCursor extends Thread
 		r = new Rectangle();
 	}
 	
+	@Override
 	public void run()
 	{
 		while (true)

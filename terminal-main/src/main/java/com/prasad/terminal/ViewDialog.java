@@ -69,24 +69,12 @@ public class ViewDialog extends Dialog {
         gridLayout1.setColumns(1);
         panel3.setLayout(gridBagLayout1);
         btnCancel.setLabel("Cancel");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                btnCancel_actionPerformed(e);
-            }
-        });
+        btnCancel.addActionListener(this::btnCancel_actionPerformed);
         panel4.setLayout(borderLayout2);
         btnBrowse.setLabel("...");
-        btnBrowse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                btnBrowse_actionPerformed(e);
-            }
-        });
+        btnBrowse.addActionListener(this::btnBrowse_actionPerformed);
         btnView.setLabel("  View  ");
-        btnView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                btnView_actionPerformed(e);
-            }
-        });
+        btnView.addActionListener(this::btnView_actionPerformed);
         gridLayout1.setRows(4);
         chkbxInternalAsciiViewer.setLabel("Internal ASCII Viewer");
         chkbxAssocProg.setVisible(false);
@@ -110,6 +98,7 @@ public class ViewDialog extends Dialog {
             , GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
     }
 
+    @Override
     protected void processWindowEvent(WindowEvent e) {
         if (e.getID() == WindowEvent.WINDOW_CLOSING) {
             cancel();

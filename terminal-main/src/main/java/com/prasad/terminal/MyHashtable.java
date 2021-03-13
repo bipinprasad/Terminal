@@ -13,6 +13,7 @@ class MyHashtableEntry<K,V> {
     MyHashtableEntry<K,V> next;
     MyHashtableEntry<K,V> previous;
 
+    @Override
     protected MyHashtableEntry<K,V> clone() {
         MyHashtableEntry<K,V> entry = new MyHashtableEntry<K,V>();
         entry.hash = hash;
@@ -522,6 +523,7 @@ public class MyHashtable<K,V> extends Dictionary<K,V> implements Cloneable, java
      * @return a string representation of this hashtable.
      * @since JDK1.0
      */
+    @Override
     public synchronized String toString() {
         int max = size() - 1;
         StringBuffer buf = new StringBuffer();

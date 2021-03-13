@@ -106,6 +106,7 @@ public class EditDialog extends Dialog {
             , GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
     }
 
+    @Override
     protected void processWindowEvent(WindowEvent e) {
         if (e.getID() == WindowEvent.WINDOW_CLOSING) {
             cancel();
@@ -230,15 +231,19 @@ public class EditDialog extends Dialog {
 
                 if (textEditor == null) {
                     mpEdit = new mpTOOLS.mpEDIT.mpEDIT(new mpTOOLS.mpEDIT.EditorOwnerInterface() {
+                        @Override
                         public void openedDoc(mpTOOLS.mpEDIT.DocInterface doc) {
                         }
 
+                        @Override
                         public void closingDoc(mpTOOLS.mpEDIT.DocInterface doc) {
                         }
 
+                        @Override
                         public void lastFileClosed() {
                         }
 
+                        @Override
                         public void editAction(mpTOOLS.mpEDIT.EditorInterface editor, String action) {
                         }
                     }, palTerm);

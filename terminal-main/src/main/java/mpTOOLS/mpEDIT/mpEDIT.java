@@ -124,6 +124,7 @@ public class mpEDIT implements EditorInterface
 	 * Search this ResourceBundle before mpEDIT's own
      * @param	rb ResourceBundle
 	 */
+	@Override
 	public void addResourceBundle(ResourceBundle rb)
 	{
 		strings.addResourceBundle(rb);
@@ -134,6 +135,7 @@ public class mpEDIT implements EditorInterface
 	 * @return	A DocInterface for the opened document.
 	 */
 
+	@Override
 	public synchronized DocInterface newDoc(DocOwnerInterface o)
 	{
 		docOwner = o;	// jj 1998.02.17 - set default docOwner
@@ -205,7 +207,8 @@ public class mpEDIT implements EditorInterface
      * @param	filename A full path to a text file to be opened.
 	 * @return	A DocInterface for the opened document.
 	 */
-	public synchronized DocInterface openDoc(DocOwnerInterface o,String filename)
+	@Override
+	public synchronized DocInterface openDoc(DocOwnerInterface o, String filename)
 	{
 		docOwner = o;	// jj 1998.02.17 - set default docOwner
 		return  openDoc(filename);
@@ -440,6 +443,7 @@ public class mpEDIT implements EditorInterface
 	 * be discarded, otherwise the user will be queried.
      * @param	bail Exit immediately, discarding changes.
 	 */
+	@Override
 	public void closeDocs(boolean bail)
 	{
 		DocMan d;

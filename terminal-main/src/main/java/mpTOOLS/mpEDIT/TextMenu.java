@@ -221,7 +221,8 @@ implements ActionListener, ToolButtonOwner
 			menuItem = mi;
 		}
 		
-		public void propertyChange( PropertyChangeEvent evt )
+		@Override
+		public void propertyChange(PropertyChangeEvent evt )
 		{
 			if ( evt.getPropertyName().equals(MpAction.ENABLED) )
 			{
@@ -240,7 +241,8 @@ implements ActionListener, ToolButtonOwner
 	private Class sfi;
 	private Class tfi;
 	
-    public boolean toolButtonIgnore()
+    @Override
+	public boolean toolButtonIgnore()
 	{
 		// ignore buttons if frame has been active < 100 milliseconds
 		
@@ -255,7 +257,8 @@ implements ActionListener, ToolButtonOwner
 	
 	// action handler, part of std java event handling
 	
-    public void actionPerformed(ActionEvent evt)
+    @Override
+	public void actionPerformed(ActionEvent evt)
 	{
 		int i;
 		

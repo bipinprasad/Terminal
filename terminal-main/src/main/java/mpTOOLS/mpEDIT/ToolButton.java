@@ -138,16 +138,19 @@ public class ToolButton extends Component implements PropertyChangeListener
 		}
 	}
 
+	@Override
 	public Dimension getPreferredSize()
 	{
 		return new Dimension(xSize, ySize);
 	}
 
+	@Override
 	public Dimension getMinimumSize()
 	{
 		return new Dimension(xSize, ySize);
 	}
 
+	@Override
 	public void paint(Graphics g)
 	{
 		if (img0 == null)
@@ -184,6 +187,7 @@ public class ToolButton extends Component implements PropertyChangeListener
 		g.drawLine(xSize-1,0,xSize-1,ySize-1);
 	}
 
+	@Override
 	public void processMouseEvent(MouseEvent e)
 	{
 		if (isEnabled() == false)
@@ -230,6 +234,7 @@ public class ToolButton extends Component implements PropertyChangeListener
 		super.processMouseEvent(e);
 	}
 
+	@Override
 	public boolean contains(int x, int y)
 	{
 		if ((x < 0) || (y < 0))
@@ -247,7 +252,8 @@ public class ToolButton extends Component implements PropertyChangeListener
 		listener = aListener;
 	}
 
-	public void propertyChange( PropertyChangeEvent evt )
+	@Override
+	public void propertyChange(PropertyChangeEvent evt )
 	{
 		if ( evt.getPropertyName().equals(MpAction.ENABLED) )
 		{

@@ -525,6 +525,7 @@ public static java.lang.Class getBeanClass() {
 public static java.lang.String getBeanClassName() {
 	return "com.ibm.network.ftp.protocol.FTPProtocol";
 }
+@Override
 public java.beans.BeanDescriptor getBeanDescriptor() {
 	java.beans.BeanDescriptor aDescriptor = null;
 	try {
@@ -585,6 +586,7 @@ public java.beans.MethodDescriptor getCurrentDir_booleanMethodDescriptor() {
  * Return the event set descriptors for this bean.
  * @return java.beans.EventSetDescriptor[]
  */
+@Override
 public java.beans.EventSetDescriptor[] getEventSetDescriptors() {
 	try {
 		java.beans.EventSetDescriptor aDescriptorList[] = {
@@ -641,6 +643,7 @@ public java.beans.MethodDescriptor getFile_javalangStringMethodDescriptor() {
 	};
 	return aDescriptor;
 }
+@Override
 public java.awt.Image getIcon(int iconKind) {
 	java.awt.Image image = null;
 	if (iconKind == java.beans.BeanInfo.ICON_COLOR_16x16) {
@@ -727,6 +730,7 @@ public java.beans.MethodDescriptor getLocalFileListMethodDescriptor() {
  * Return the method descriptors for this bean.
  * @return java.beans.MethodDescriptor[]
  */
+@Override
 public java.beans.MethodDescriptor[] getMethodDescriptors() {
 	try {
 		java.beans.MethodDescriptor aDescriptorList[] = {
@@ -775,6 +779,7 @@ public java.beans.MethodDescriptor[] getMethodDescriptors() {
  * Return the property descriptors for this bean.
  * @return java.beans.PropertyDescriptor[]
  */
+@Override
 public java.beans.PropertyDescriptor[] getPropertyDescriptors() {
 	try {
 		java.beans.PropertyDescriptor aDescriptorList[] = {

@@ -30,67 +30,83 @@ package mpTOOLS.mpEDIT;
 import java.awt.*;
 import java.awt.event.*;
 
-public class AboutDialog extends Dialog implements WindowListener, ActionListener
-{
-	private static final long serialVersionUID = 7853264561313829851L;
-	Button ok;
+public class AboutDialog extends Dialog implements WindowListener, ActionListener {
+    private static final long serialVersionUID = 7853264561313829851L;
+    Button ok;
 
-	public AboutDialog(Frame textFrame, StringMan strings, String title)
-	{
-		super(textFrame,title,true);
+    public AboutDialog(Frame textFrame, StringMan strings, String title) {
+        super(textFrame, title, true);
 
-		setLayout( new GridBagLayout() );
+        setLayout(new GridBagLayout());
 
-		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.insets = new Insets(0,0,0,0);
-		constraints.weighty = 1;
-		constraints.anchor = GridBagConstraints.CENTER;
-	
-		String temp;
-		int i;
-	
-		for (i=1;;i++) {
-			temp = "TextAbout" + i;
-			temp = strings.getOptionalString(temp); 
-			
-			if (temp == null)
-				break;
-			
-        		constraints.gridy = i;
-			add(new Label(temp), constraints);
-		}
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.insets = new Insets(0, 0, 0, 0);
+        constraints.weighty = 1;
+        constraints.anchor = GridBagConstraints.CENTER;
+
+        String temp;
+        int i;
+
+        for (i = 1; ; i++) {
+            temp = "TextAbout" + i;
+            temp = strings.getOptionalString(temp);
+
+            if (temp == null)
+                break;
+
+            constraints.gridy = i;
+            add(new Label(temp), constraints);
+        }
 
 
-		ok = new Button(strings.getString("ButtonOk"));
-		ok.addActionListener(this);
-		constraints.gridy = i;
-		add(ok, constraints);
+        ok = new Button(strings.getString("ButtonOk"));
+        ok.addActionListener(this);
+        constraints.gridy = i;
+        add(ok, constraints);
 
-		Dimension size = new Dimension(400,250);
-		setSize(size);
+        Dimension size = new Dimension(400, 250);
+        setSize(size);
 
-		addWindowListener(this);
-	}
+        addWindowListener(this);
+    }
 
-	// dispose on 'ok'
+    // dispose on 'ok'
 
-    public void actionPerformed(ActionEvent event)
-	{
+    @Override
+    public void actionPerformed(ActionEvent event) {
         if (event.getSource() == ok)
-			dispose();
-	}
+            dispose();
+    }
 
-	// add the 1.1 WindowListener stuff
+    // add the 1.1 WindowListener stuff
 
-    public void windowDeiconified(WindowEvent event) {}
-    public void windowIconified(WindowEvent event) {}
-    public void windowActivated(WindowEvent event) {}
-    public void windowDeactivated(WindowEvent event) {}
-    public void windowOpened(WindowEvent event) {}
-    public void windowClosed(WindowEvent event) {}
+    @Override
+    public void windowDeiconified(WindowEvent event) {
+    }
 
+    @Override
+    public void windowIconified(WindowEvent event) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent event) {
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent event) {
+    }
+
+    @Override
+    public void windowOpened(WindowEvent event) {
+    }
+
+    @Override
+    public void windowClosed(WindowEvent event) {
+    }
+
+    @Override
     public void windowClosing(WindowEvent event) {
-			dispose();
+        dispose();
     }
 
 }

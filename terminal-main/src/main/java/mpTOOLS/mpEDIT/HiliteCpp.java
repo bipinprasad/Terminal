@@ -127,7 +127,8 @@ public class HiliteCpp extends Hilite
 		keys = keywordChars;
 	}
 
-	protected void scanLine(int i)
+	@Override
+    protected void scanLine(int i)
 	{
 		char	c,d,e;
 		String	w;

@@ -40,6 +40,7 @@ public class DirSyncInfo {
     public DirSyncInfo() {
     }
 
+    @Override
     public Object clone() {
         DirSyncInfo retVal = new DirSyncInfo();
         retVal.remoteHost = remoteHost;

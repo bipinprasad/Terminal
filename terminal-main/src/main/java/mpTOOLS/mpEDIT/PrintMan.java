@@ -80,6 +80,7 @@ public class PrintMan extends Thread
 			spoolProgress.dispose();
 	}
 
+	@Override
 	public void run()
 	{
 		pjob = parent.getToolkit().getPrintJob(parent, jobName, null);

@@ -23,6 +23,7 @@ public class AppImageGetter extends ImageGetterBase implements ImageGetterInterf
         baseDir = dir;
     }
 
+    @Override
     public Image getImage(String imageRelPath) // image example "images/abc"
     {
         if (imageRelPath == null)
@@ -68,6 +69,7 @@ public class AppImageGetter extends ImageGetterBase implements ImageGetterInterf
   }
   */
 
+    @Override
     public String[] getDirectories(String parentDir) {
         return getDirectories(baseDir, parentDir);
     }
@@ -76,6 +78,7 @@ public class AppImageGetter extends ImageGetterBase implements ImageGetterInterf
         File f = new File(baseDir, parentDir);
         if (f.isDirectory()) {
             String[] retVal = f.list(new FilenameFilter() {
+                @Override
                 public boolean accept(File f2, String child) {
                     File f3 = new File(f2, child);
                     return f3.isDirectory();
@@ -90,6 +93,7 @@ public class AppImageGetter extends ImageGetterBase implements ImageGetterInterf
         }
     }
 
+    @Override
     public String[] getFiles(String parentDir) {
         return getFiles(baseDir, parentDir);
     }
@@ -98,6 +102,7 @@ public class AppImageGetter extends ImageGetterBase implements ImageGetterInterf
         File f = new File(baseDir, parentDir);
         if (f.isDirectory()) {
             String[] retVal = f.list(new FilenameFilter() {
+                @Override
                 public boolean accept(File f2, String child) {
                     File f3 = new File(f2, child);
                     return f3.isFile();

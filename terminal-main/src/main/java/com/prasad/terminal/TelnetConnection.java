@@ -443,6 +443,7 @@ public class TelnetConnection implements Runnable {
     byte[] b = new byte[MAX_INPUT_BUFLEN];
     char[] c = new char[MAX_INPUT_BUFLEN];
 
+    @Override
     public void run() {
         boolean client_kill = false;
         if (debug)

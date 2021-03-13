@@ -200,6 +200,7 @@ class DialogHost_btnCancel_actionAdapter implements ActionListener {
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.btnCancel_actionPerformed(e);
     }
@@ -212,6 +213,7 @@ class DialogHost_this_windowAdapter extends WindowAdapter {
         this.adaptee = adaptee;
     }
 
+    @Override
     public void windowClosing(WindowEvent e) {
         adaptee.this_windowClosing(e);
     }

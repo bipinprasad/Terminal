@@ -45,16 +45,19 @@ public class PanelAttrs extends Canvas {
         recomputeSizes = false;
     }
 
+    @Override
     public Dimension getPreferredSize() {
         return getMinimumSize();
     }
 
+    @Override
     public Dimension getMinimumSize() {
         if (recomputeSizes)
             computeSize();
         return minDim;
     }
 
+    @Override
     public void paint(Graphics g) {
         for (int j = 0; j < MAXCOLS; j++) {
             int xpos = j * charWidth + 100;
@@ -106,6 +109,7 @@ public class PanelAttrs extends Canvas {
         final PanelAttrs p2 = this;
 
         fld.addTextListener(new TextListener() {
+            @Override
             public void textValueChanged(TextEvent e) {
                 String s = ((TextField) e.getSource()).getText();
                 int magn = 100;
@@ -123,6 +127,7 @@ public class PanelAttrs extends Canvas {
         frame.add(mainPanel, BorderLayout.CENTER);
         mainPanel.add(p2);
         frame.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 ((Frame) e.getSource()).dispose();
             }
@@ -131,6 +136,7 @@ public class PanelAttrs extends Canvas {
         frame.show();
     }
 
+    @Override
     protected void finalize() throws Throwable {
         if (frame != null) {
             frame.dispose();

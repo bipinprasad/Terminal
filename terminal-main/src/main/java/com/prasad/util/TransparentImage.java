@@ -89,17 +89,20 @@ public class TransparentImage extends Component {
         return drawEdge;
     }
 
+    @Override
     public Dimension getPreferredSize() {
         return image != null ? new Dimension(image.getWidth(this), image.getHeight(this))
             : new Dimension(16, 16);
     }
 
+    @Override
     public void update(Graphics g) {
         paint(g);
     }
 
     private transient Image canvas;
 
+    @Override
     public void paint(Graphics pg) {
         Dimension size = getSize();
         Color old = pg.getColor();

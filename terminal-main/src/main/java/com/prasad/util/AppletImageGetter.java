@@ -29,6 +29,7 @@ public class AppletImageGetter extends ImageGetterBase implements ImageGetterInt
         applet = imageApplet;
     }
 
+    @Override
     public Image getImage(String imageRelPath) // image example "images/abc"
     {
         if (imageRelPath == null)
@@ -112,10 +113,12 @@ public class AppletImageGetter extends ImageGetterBase implements ImageGetterInt
     }
 
 
+    @Override
     public String[] getDirectories(String parentDir) {
         return getChildrenFiles(parentDir, "1");
     }
 
+    @Override
     public String[] getFiles(String parentDir) {
         return getChildrenFiles(parentDir, "0");
     }
@@ -149,14 +152,17 @@ public class AppletImageGetter extends ImageGetterBase implements ImageGetterInt
         StringBuffer error;
         boolean hasError;
 
+        @Override
         public boolean getDebug() {
             return debug;
         }
 
+        @Override
         public void setDebug(boolean flag) {
             debug = flag;
         }
 
+        @Override
         public void processLine(String str) {
             if (debug) {
                 lineCnt++;

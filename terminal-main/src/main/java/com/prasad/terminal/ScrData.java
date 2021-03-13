@@ -1140,6 +1140,7 @@ public class ScrData {
             smartMouse_InterChar_WaitTime = interCharWait;
         }
 
+        @Override
         public void vput(Graphics g, int ch) {
             waitTime = 0;
             receivedChar = true;
@@ -1426,6 +1427,7 @@ public class ScrData {
         }
 
         //System.out.println("ERROR: PaintLapmFuncThread: Run complete after " + cnt + " loops");
+        @Override
         public void run() {
             if (terminalSender != null)
                 terminalSender.setOptimizeDisplay(false, false);
@@ -1639,6 +1641,7 @@ public class ScrData {
             active = true;
         }
 
+        @Override
         public void run() {
             int cnt = 0;
             while (waitTime < waitTimeout) {

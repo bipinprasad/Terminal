@@ -131,7 +131,8 @@ class ReplaceDialog extends Dialog implements WindowListener, ActionListener, It
 		addWindowListener(this);
 	}
 	
- 	public void itemStateChanged(ItemEvent e)
+ 	@Override
+    public void itemStateChanged(ItemEvent e)
  	{
  		if (e.getSource() == regex)
  		{
@@ -148,19 +149,27 @@ class ReplaceDialog extends Dialog implements WindowListener, ActionListener, It
  		}
  	}
  	
+    @Override
     public void windowDeiconified(WindowEvent event) {}
+    @Override
     public void windowIconified(WindowEvent event) {}
+    @Override
     public void windowActivated(WindowEvent event) {}
+    @Override
     public void windowDeactivated(WindowEvent event) {}
+    @Override
     public void windowOpened(WindowEvent event) {}
+    @Override
     public void windowClosed(WindowEvent event) {}
+    @Override
     public void windowClosing(WindowEvent event)
 	{
 			textFrame.CloseReplaceDialog(pattern.getText(),replace.getText());
 			dispose();
     }
 
-	public void actionPerformed(ActionEvent evt)
+	@Override
+    public void actionPerformed(ActionEvent evt)
 	{
         if (evt.getSource() == cbutton)
 		{
