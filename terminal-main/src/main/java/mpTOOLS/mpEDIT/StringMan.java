@@ -42,7 +42,7 @@ public class StringMan
 
 	/**
 	 * Search this resource bundle before using mpEDIT's own.
-     * @param	new_rb ResourceBundle
+     * @param	rb ResourceBundle
 	 */
 	public void addResourceBundle(ResourceBundle rb)
 	{

@@ -21,7 +21,7 @@ import java.util.*;
 public class VersionDialog extends Dialog {
     // Do not edit the following two lines - they will be
     // updated using updTermVer shell script on the server
-    public static final String VERSION = "1.11";
+    public static final String VERSION = "1.1.2";
     public static final Date COMPILE_DATE = new Date("Sun Apr 02 17:36:47 CDT 2000");
 
     Panel panel1 = new Panel();
@@ -51,10 +51,10 @@ public class VersionDialog extends Dialog {
     }
 
     /**
-     * Create a new version window
+     * Create a new version window.
      *
-     * @param parent the parent frame
-     **/
+     * @param frame the parent frame
+     */
     public VersionDialog(Frame frame) {
         this(frame, "", false);
     }
@@ -89,7 +89,7 @@ public class VersionDialog extends Dialog {
         lblCompileDate.setAlignment(1);
         panel3.add(lblCompileDate);
 
-        lblCopyRight.setText("Copyright 1998-1999 Prasad & Associates Ltd.");
+        lblCopyRight.setText("Copyright 1998-1999, 2021 Prasad & Associates Ltd.");
         lblCopyRight.setFont(new Font("SansSerif", Font.PLAIN, 12));
         lblCopyRight.setAlignment(1);
         panel3.add(lblCopyRight);

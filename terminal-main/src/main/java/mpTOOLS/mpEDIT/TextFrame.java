@@ -28,7 +28,6 @@
 package mpTOOLS.mpEDIT;
 
 import java.awt.*;
-import java.io.*;
 import java.util.*;
 import java.awt.event.*;
 
@@ -54,7 +53,7 @@ public class TextFrame extends Frame implements WindowListener
 
 	public TextFrame(mpEDIT mpe, StringMan str, Properties pr, DocMan doc, Ruler ruler, ImageLoader imgLoader)
 	{
-		super.setTitle("mpEDIT");
+		super.setTitle("mpTOOLS/mpEDIT");
 
 		mpEdit = mpe;
 		strings = str;

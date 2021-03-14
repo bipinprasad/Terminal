@@ -13,6 +13,7 @@ import java.awt.event.*;
 import java.awt.datatransfer.*;
 import java.io.*;
 
+import com.prasad.util.ClassPathResourceUtils;
 import com.prasad.util.ColorPicker;
 import com.prasad.util.FontPicker;
 
@@ -3361,6 +3362,7 @@ public class PanelTerminal extends Canvas implements
     }
 
     private FileDialogRemote fileDialogRemote;
+    private FileDialogResource fileDialogResource;
     //  private java.awt.FileDialog 		fileDialogLocal ;
     private SaveDialog saveDialog;
 
@@ -3447,8 +3449,7 @@ public class PanelTerminal extends Canvas implements
         String dirlistPath = palTerm.cgiDir + palTerm.pgm_secdirlist + palTerm.cgiExtension;
         URL dirlistURL;
         try {
-            dirlistURL = new URL(palTerm.protocol, palTerm.serverHost,
-                palTerm.serverPort, dirlistPath);
+            dirlistURL = new URL(palTerm.protocol, palTerm.serverHost, palTerm.serverPort, dirlistPath);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("PanelTerminal.createFileDialog(): Error while creating URL to");
@@ -3464,6 +3465,21 @@ public class PanelTerminal extends Canvas implements
         fileDialogRemote.messageLabel.setText("");
 
         return fileDialogRemote;
+
+    }
+
+    static FileDialogResource createFileDialogResource(PalTerm palTerm, Frame parentFrame, boolean debug) {
+
+        FileDialogResource fileDialogResource;
+
+        // Path to the "dirlist" CGI program to get a directory listing
+        String dirlistPath = palTerm.cgiDir + palTerm.pgm_secdirlist + palTerm.cgiExtension;
+        // Create file dialog box
+        fileDialogResource = new FileDialogResource(parentFrame, true);
+        fileDialogResource.setDebug(debug);
+        fileDialogResource.messageLabel.setText("");
+
+        return fileDialogResource;
 
     }
 
@@ -3623,6 +3639,43 @@ public class PanelTerminal extends Canvas implements
 
             file = fileDialogLocal.getFile();
         } else {
+            // Try resource directory first, if successful, then return
+            if (fileDialogResource == null) {
+                fileDialogResource = createFileDialogResource(palTerm, getParentFrame(), getDebug());
+                fileDialogResource.pack();
+                fileDialogResource.setSize(fileDialogResource.getSize().width, getSize().height);
+            }
+            // Read directory to get updated file list
+            String dir = remoteDir;
+            if (fileDialogResource.readDirectory(dir, null)) {
+                // Load a new terminfo file from the server
+                fileDialogResource.setFileName(null);
+                fileDialogResource.setTitle("Select Terminal Resource");
+                fileDialogResource.setLocation(getLocation().x + getSize().width / 4, getLocation().y + 75);
+                fileDialogResource.show();
+                file = fileDialogResource.getFileName();
+                if (file != null && file.length() > 0) {
+                    String content = ClassPathResourceUtils.getResourceContent(file, PalTerm.class);
+                    if (content != null && !content.isEmpty()) {
+                        retVal = new TermInfo(content);
+                    }
+                    Frame f = getParentFrame();
+                    if (f == hiddenParentFrame) {
+                        invalidate();
+                        repaint();
+                    } else {
+                        f.invalidate();
+                        f.repaint();
+                    }
+                }
+                return retVal;
+            } else {
+                showMessage("Error reading terminfo resource directory.", true);
+            }
+        }
+
+        if (file == null) {
+            // read using CGI
             if (fileDialogRemote == null) {
                 fileDialogRemote = createFileDialogRemote(palTerm, getParentFrame(), getDebug());
                 fileDialogRemote.pack();
@@ -4185,7 +4238,7 @@ public class PanelTerminal extends Canvas implements
         } else if (terminalType == TERMINAL_TYPE_VT220) {
             terminalWrite("VT220 terminal emulator \r\n"/*,0*/);
         }
-        terminalWrite("\r\nCopyright 1999 by Prasad & Associates Ltd. All Rights Reserved.\r\n\r\n"/*,0*/);
+        terminalWrite("\r\nCopyright 1999,2021 by Prasad & Associates Ltd. All Rights Reserved.\r\n\r\n"/*,0*/);
     }
 
     /**

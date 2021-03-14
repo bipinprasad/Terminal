@@ -14,6 +14,8 @@ import java.util.*;
 
 import mpTOOLS.mpEDIT.ImageLoader;
 
+import javax.imageio.ImageIO;
+
 public class PalTerm extends Applet implements Parameters, ImageLoader {
 
     boolean debug = false;
@@ -1042,7 +1044,7 @@ public class PalTerm extends Applet implements Parameters, ImageLoader {
 
         // need to get out of the sandbox when running from a jar file on local machine
         // note: this code is repeated in every method that uses it !
-        //if (!isStandalone)
+        if (!isStandalone)
         {
             boolean success = false;
             // try to get Netscape permission
@@ -1084,8 +1086,9 @@ public class PalTerm extends Applet implements Parameters, ImageLoader {
         }
 
         char firstChar = image_file.charAt(0);
-        if (image_file.startsWith("/"))
+        if (image_file.startsWith("/")) {
             image_file = image_file.substring(1);
+        }
 
         Toolkit tk = Toolkit.getDefaultToolkit();
 
@@ -1098,7 +1101,33 @@ public class PalTerm extends Applet implements Parameters, ImageLoader {
                 new_image = tk.getImage(tmpImgPath);
             } else {
                 tmpImgPath = image_file.replace('\\', '/');
-                new_image = tk.getImage(new URL("http", this.serverHost, this.serverPort, this.docBaseDir + tmpImgPath));
+                BufferedImage resourceImage = null;
+                {
+                    // get image from resource if available usig relative and absolute path
+                    try {
+                        URL resourceUrl = getClass().getResource(tmpImgPath);
+                        if (resourceUrl == null) {
+                            System.err.printf("Resource URL is null for image file=%s as resource, isStandalone=%s, useLocalImages=%s\n",
+                                image_file, isStandalone, useLocalImages);
+                            resourceUrl = getClass().getResource("/" + tmpImgPath);
+                            if (resourceUrl == null) {
+                                throw new IOException("Resource URL is null for path=/" + tmpImgPath);
+                            }
+                        }
+                        resourceImage = ImageIO.read(resourceUrl);
+                    }
+                    catch (IOException e) {
+                        System.err.printf("Could not load image file=%s as resource, isStandalone=%s, useLocalImages=%s\n",
+                            image_file, isStandalone, useLocalImages);
+                        e.printStackTrace();
+                    }
+                }
+                if (resourceImage == null) {
+                    // try to get from the webserver
+                    new_image = tk.getImage(new URL("http", this.serverHost, this.serverPort, this.docBaseDir + tmpImgPath));
+                } else {
+                    new_image = resourceImage;
+                }
             }
             observer.prepareImage(new_image, observer);
 
@@ -1122,7 +1151,9 @@ public class PalTerm extends Applet implements Parameters, ImageLoader {
         }
 
         if ((observer.checkImage(new_image, observer) & ImageObserver.ALLBITS) == 0) {
-            System.err.println("Could not load image file completely: " + image_file);
+            System.err.printf("Could not load image file=%s completely, isStandalone=%s, useLocalImages=%s\n",
+                image_file, isStandalone, useLocalImages);
+            Thread.dumpStack();
             //new_image = null; some images are animated
         } else {
             //System.out.println("Loading image: " + image_file);
